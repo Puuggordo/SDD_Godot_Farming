@@ -12,7 +12,7 @@ extends PanelContainer
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	size.y = 0
 	carrot_amount.text = "= " + str(Global.carrot_number)
 	onion_amount.text = "= " + str(Global.onion_number)

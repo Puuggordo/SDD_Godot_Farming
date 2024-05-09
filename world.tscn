@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="2_yyt5b"]
+[ext_resource type="PackedScene" uid="uid://c8m1b206mrphc" path="res://player.tscn" id="2_yyt5b"]
 [ext_resource type="PackedScene" uid="uid://beyjiaurnmv4g" path="res://scenes/farming/carrot_seedpack.tscn" id="3_npg2j"]
 [ext_resource type="PackedScene" uid="uid://b62b780yrdqng" path="res://scenes/farming/onion_seedpack.tscn" id="4_8yu1j"]
 [ext_resource type="PackedScene" uid="uid://bguvpkh55i8uf" path="res://scenes/farming/soil_container.tscn" id="5_f4mds"]

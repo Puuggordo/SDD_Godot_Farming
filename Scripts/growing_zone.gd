@@ -8,12 +8,12 @@ func _ready():
 	$plant_growing.play("none")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if plant_growing == false:
 		plant = Global.plant_selected
 
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	if !plant_growing:
 		if plant == "carrot":
 			plant_growing = true
@@ -54,7 +54,7 @@ func _on_strawberry_timer_timeout():
 	plant_timer()
 
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_pressed("click"):
 		if plant_grown:
 			if plant == "carrot":
