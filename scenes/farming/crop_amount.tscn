@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://mkkrne3110fn"]
+
+[ext_resource type="Script" path="res://Scripts/crop_amount.gd" id="1_vt7rr"]
+[ext_resource type="Texture2D" uid="uid://ci6ya1ye30ke" path="res://scenes/farming/onion_grown_sprite.png" id="2_b576j"]
+[ext_resource type="Texture2D" uid="uid://bs4cdjso0fafb" path="res://scenes/farming/carrot_grown_sprite.png" id="3_8lg2k"]
+[ext_resource type="Texture2D" uid="uid://tnt3jbipj2j7" path="res://scenes/farming/strawberry_grown_sprite.png" id="4_i2wt5"]
+[ext_resource type="Texture2D" uid="uid://cnh8dsjw43hre" path="res://scenes/farming/corn_grown_sprite.png" id="5_vqpn6"]
+[ext_resource type="Texture2D" uid="uid://b7kymqpwkjomg" path="res://scenes/farming/lettuce_grown_sprite.png" id="6_2c3fv"]
+[ext_resource type="Texture2D" uid="uid://cs2qqxhle7m55" path="res://scenes/farming/apple_grown_sprite.png" id="7_bqpd3"]
+[ext_resource type="Texture2D" uid="uid://2wfxk1rw15i3" path="res://scenes/farming/orange_grown_sprite.png" id="8_55cph"]
+
+[node name="crop_amount" type="PanelContainer"]
+layout_direction = 1
+offset_right = 219.0
+size_flags_vertical = 0
+script = ExtResource("1_vt7rr")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="carrot_container" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/carrot_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource("3_8lg2k")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="carrot_amount" type="Label" parent="GridContainer/carrot_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+
+[node name="onion_container" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="onion" type="TextureRect" parent="GridContainer/onion_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource("2_b576j")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="onion_amount" type="Label" parent="GridContainer/onion_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+
+[node name="lettuce_container" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="lettuce" type="TextureRect" parent="GridContainer/lettuce_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource("6_2c3fv")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="lettuce_amount" type="Label" parent="GridContainer/lettuce_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="strawberry_container" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="strawberry" type="TextureRect" parent="GridContainer/strawberry_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource("4_i2wt5")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="strawberry_amount" type="Label" parent="GridContainer/strawberry_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+
+[node name="corn_container" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="corn" type="TextureRect" parent="GridContainer/corn_container"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource("5_vqpn6")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="corn_amount" type="Label" parent="GridContainer/corn_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="apple_container" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="apple" type="TextureRect" parent="GridContainer/apple_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource("7_bqpd3")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="apple_amount" type="Label" parent="GridContainer/apple_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="orange_container" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="orange" type="TextureRect" parent="GridContainer/orange_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource("8_55cph")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="orange_amount" type="Label" parent="GridContainer/orange_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20

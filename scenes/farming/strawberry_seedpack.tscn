@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://hpxhs5ijn0f3"]
+
+[ext_resource type="Script" path="res://Scripts/strawberry_seedpack.gd" id="1_b8vfv"]
+[ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="2_p5x62"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su747"]
+atlas = ExtResource("2_p5x62")
+region = Rect2(16, 64, 14, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vowld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su747")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqdxi"]
+size = Vector2(14, 12)
+
+[node name="strawberry_seedpack" type="StaticBody2D"]
+script = ExtResource("1_b8vfv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vowld")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_nqdxi")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
