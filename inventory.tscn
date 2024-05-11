@@ -1,166 +1,85 @@
-[gd_scene load_steps=3 format=3 uid="uid://bncxrmawb3mao"]
+[gd_scene load_steps=4 format=3 uid="uid://ctxcpuh2fnlr0"]
 
-[ext_resource type="Texture2D" uid="uid://br2klf5k7osc" path="res://Sprites/default_inventory_background.png" id="1_jcv1k"]
-[ext_resource type="Texture2D" uid="uid://xeb85o7kcod8" path="res://Sprites/item_slot_default_background.png" id="2_kk3v3"]
+[ext_resource type="Script" path="res://inventory.gd" id="1_clu2x"]
+[ext_resource type="Texture2D" uid="uid://8pn4roac3kh6" path="res://Sprites/InventoryRect.png" id="1_jxb4q"]
+[ext_resource type="PackedScene" uid="uid://dnrogghhhyjiy" path="res://slot.tscn" id="2_uu1xa"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 4.0
-offset_top = 20.0
-offset_right = 4.0
-offset_bottom = 20.0
+script = ExtResource("1_clu2x")
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 207.0
-offset_bottom = 112.0
-texture = ExtResource("1_jcv1k")
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(128, 80)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 80.0
+texture = ExtResource("1_jxb4q")
+region_rect = Rect2(0, 0, 19, 19)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 96.0
-offset_top = 23.0
-offset_right = 202.0
-offset_bottom = 107.0
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -34.0
+offset_right = 58.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
 
-[node name="Slot1" type="TextureRect" parent="GridContainer"]
+[node name="Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot2" type="TextureRect" parent="GridContainer"]
+[node name="Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot3" type="TextureRect" parent="GridContainer"]
+[node name="Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot4" type="TextureRect" parent="GridContainer"]
+[node name="Slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot5" type="TextureRect" parent="GridContainer"]
+[node name="Slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot6" type="TextureRect" parent="GridContainer"]
+[node name="Slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot7" type="TextureRect" parent="GridContainer"]
+[node name="Slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot8" type="TextureRect" parent="GridContainer"]
+[node name="Slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot9" type="TextureRect" parent="GridContainer"]
+[node name="Slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot10" type="TextureRect" parent="GridContainer"]
+[node name="Slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot11" type="TextureRect" parent="GridContainer"]
+[node name="Slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot12" type="TextureRect" parent="GridContainer"]
+[node name="Slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot13" type="TextureRect" parent="GridContainer"]
+[node name="Slot13" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot14" type="TextureRect" parent="GridContainer"]
+[node name="Slot14" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
 
-[node name="Slot15" type="TextureRect" parent="GridContainer"]
+[node name="Slot15" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
-
-[node name="Slot16" type="TextureRect" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
-
-[node name="Slot17" type="TextureRect" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
-
-[node name="Slot18" type="TextureRect" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
-
-[node name="Slot19" type="TextureRect" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5
-
-[node name="Slot20" type="TextureRect" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_kk3v3")
-stretch_mode = 5

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xeb85o7kcod8"
-path="res://.godot/imported/item_slot_default_background.png-3c3e05a072d63583c3a33a755f3423d2.ctex"
+uid="uid://8pn4roac3kh6"
+path="res://.godot/imported/InventoryRect.png-55d0ec4423374a5a9db568f7dd9fd46b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/item_slot_default_background.png"
-dest_files=["res://.godot/imported/item_slot_default_background.png-3c3e05a072d63583c3a33a755f3423d2.ctex"]
+source_file="res://Sprites/InventoryRect.png"
+dest_files=["res://.godot/imported/InventoryRect.png-55d0ec4423374a5a9db568f7dd9fd46b.ctex"]
 
 [params]
 

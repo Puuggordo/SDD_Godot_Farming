@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=27 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://Scripts/coin_amount.gd" id="9_o8pld"]
 [ext_resource type="PackedScene" uid="uid://hpxhs5ijn0f3" path="res://scenes/farming/strawberry_seedpack.tscn" id="11_oyphr"]
 [ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://scenes/farming/shop.tscn" id="12_i8hnp"]
+[ext_resource type="Script" path="res://inventory_ui.gd" id="14_d07n6"]
+[ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory.tscn" id="15_5ywqk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yna"]
 texture = ExtResource("1_7c0cg")
@@ -879,6 +881,7 @@ position = Vector2(336, 124)
 shape = SubResource("RectangleShape2D_c4taq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="crop_amount" parent="CanvasLayer" instance=ExtResource("6_sgyun")]
 anchors_preset = 3
@@ -947,9 +950,21 @@ position = Vector2(223, 196)
 position = Vector2(336, 137)
 shape = SubResource("CircleShape2D_rdwqk")
 
+[node name="inventory_ui" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("14_d07n6")
+
+[node name="Inventory" parent="inventory_ui" instance=ExtResource("15_5ywqk")]
+offset_left = 483.0
+offset_top = 385.0
+offset_right = 483.0
+offset_bottom = 385.0
+
 [connection signal="body_entered" from="front/belowstall" to="front" method="_on_belowstall_body_entered"]
 [connection signal="body_entered" from="front/abovestall" to="front" method="_on_abovestall_body_entered"]
 [connection signal="body_entered" from="shop_area" to="." method="_on_shop_area_body_entered"]
 [connection signal="body_exited" from="shop_area" to="." method="_on_shop_area_body_exited"]
+[connection signal="closed" from="inventory_ui/Inventory" to="inventory_ui" method="_on_inventory_closed"]
+[connection signal="opened" from="inventory_ui/Inventory" to="inventory_ui" method="_on_inventory_opened"]
 
 [editable path="Player"]
