@@ -952,13 +952,15 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="inventory_ui" type="CanvasLayer" parent="."]
 process_mode = 3
+scale = Vector2(3.5, 3.5)
+transform = Transform2D(3.5, 0, 0, 3.5, 0, 0)
 script = ExtResource("14_d07n6")
 
 [node name="Inventory" parent="inventory_ui" instance=ExtResource("15_5ywqk")]
-offset_left = 483.0
-offset_top = 385.0
-offset_right = 483.0
-offset_bottom = 385.0
+offset_left = 96.0961
+offset_top = 55.2553
+offset_right = 96.0961
+offset_bottom = 55.2553
 
 [connection signal="body_entered" from="front/belowstall" to="front" method="_on_belowstall_body_entered"]
 [connection signal="body_entered" from="front/abovestall" to="front" method="_on_abovestall_body_entered"]

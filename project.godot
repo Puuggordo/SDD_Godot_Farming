@@ -21,7 +21,6 @@ Global="*res://Scripts/Global.gd"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="ignore"
 
 [input]
 
