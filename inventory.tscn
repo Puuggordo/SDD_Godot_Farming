@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctxcpuh2fnlr0"]
+[gd_scene load_steps=3 format=3 uid="uid://ctxcpuh2fnlr0"]
 
 [ext_resource type="Script" path="res://inventory.gd" id="1_clu2x"]
 [ext_resource type="Texture2D" uid="uid://8pn4roac3kh6" path="res://Sprites/InventoryRect.png" id="1_jxb4q"]
-[ext_resource type="PackedScene" uid="uid://dnrogghhhyjiy" path="res://slot.tscn" id="2_uu1xa"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -38,48 +37,3 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
-
-[node name="Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot13" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot14" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2
-
-[node name="Slot15" parent="NinePatchRect/GridContainer" instance=ExtResource("2_uu1xa")]
-layout_mode = 2

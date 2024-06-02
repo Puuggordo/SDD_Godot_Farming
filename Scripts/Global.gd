@@ -26,9 +26,19 @@ func add_item(item):
 	for i in range(inventory.size()):
 		var slot = inventory[i]
 		if slot!= null and slot["name"] == item["name"]:
-			slot["quantity"] += item["quantity"]
-			inventoryUpdate.emit()
-			return true
+			if slot["quantity"] + item["quantity"] <= item["max_stack"]:
+				slot["quantity"] += item["quantity"]
+				inventoryUpdate.emit()
+				return true
+			else:
+				var space_left = item["max_stack"] - slot["quantity"]
+				slot["quantity"] = item["max_stack"]
+				item["quantity"] -= space_left
+				for r in range(inventory.size()):
+					if slot == null:
+						inventory.remove_at(r)
+						inventory.insert(r,item)
+						return true
 		elif slot == null:
 			inventory.remove_at(i)
 			inventory.insert(i,item)

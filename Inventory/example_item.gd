@@ -1,6 +1,7 @@
 @tool
 extends Node2D
 
+@export var quantity:int
 @export var item_type = ""
 @export var item_name = ""
 @export var description = ""
@@ -19,11 +20,12 @@ func _process(delta):
 
 func pickup_item():
 	var item = {
-		"quantity":1,
+		"quantity":quantity,
 		"type":item_type,
 		"name":item_name,
 		"texture":item_texture,
-		"scene_path":scene_path
+		"scene_path":scene_path,
+		"max_stack":max_stack
 	}
 	Global.add_item(item)
 
