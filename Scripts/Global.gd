@@ -25,7 +25,7 @@ func _ready():
 func add_item(item):
 	for i in range(inventory.size()):
 		var slot = inventory[i]
-		if slot!= null and slot["name"] == item["name"]:
+		if slot != null and slot["name"] == item["name"]:
 			if slot["quantity"] + item["quantity"] <= item["max_stack"]:
 				slot["quantity"] += item["quantity"]
 				inventoryUpdate.emit()
@@ -45,22 +45,6 @@ func add_item(item):
 			inventoryUpdate.emit()
 			return true
 	return false
-
-
-func remove_item(item, count) -> bool:
-	for slot in inventory:
-		if slot["item"] == item:
-			if slot["count"] >= count:
-				slot["count"] -= count
-				if slot["count"] == 0:
-					slot["item"] = null
-				return true
-			else:
-				count -= slot["count"]
-				slot["item"] = null
-				slot["count"] = 0
-	return count == 0
-
 
 var item = {
 	0 : {

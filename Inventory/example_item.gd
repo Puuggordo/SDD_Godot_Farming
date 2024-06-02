@@ -33,4 +33,3 @@ func pickup_item():
 func _on_area_2d_body_entered(body):
 	if body.has_method("animator"):
 		pickup_item()
-		print(Global.inventory)
