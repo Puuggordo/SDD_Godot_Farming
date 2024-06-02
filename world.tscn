@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=29 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://scenes/farming/shop.tscn" id="12_i8hnp"]
 [ext_resource type="Script" path="res://inventory_ui.gd" id="14_d07n6"]
 [ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory.tscn" id="15_5ywqk"]
+[ext_resource type="PackedScene" uid="uid://cvsih7eyw8h0" path="res://Inventory/example_item.tscn" id="16_f7tpb"]
+[ext_resource type="Texture2D" uid="uid://cedjn28l1bclt" path="res://Sprites/healthbarUnder.png" id="17_8d7jr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yna"]
 texture = ExtResource("1_7c0cg")
@@ -952,6 +954,7 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="inventory_ui" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 scale = Vector2(3.5, 3.5)
 transform = Transform2D(3.5, 0, 0, 3.5, 0, 0)
 script = ExtResource("14_d07n6")
@@ -962,11 +965,22 @@ offset_top = 55.2553
 offset_right = 96.0961
 offset_bottom = 55.2553
 
+[node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
+position = Vector2(93, 175)
+item_type = "wood"
+item_name = "longstick"
+description = "desc_wood"
+item_texture = ExtResource("17_8d7jr")
+
+[node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
+position = Vector2(142, 182)
+item_type = "icon"
+item_name = "godoticon"
+description = "descricon"
+
 [connection signal="body_entered" from="front/belowstall" to="front" method="_on_belowstall_body_entered"]
 [connection signal="body_entered" from="front/abovestall" to="front" method="_on_abovestall_body_entered"]
 [connection signal="body_entered" from="shop_area" to="." method="_on_shop_area_body_entered"]
 [connection signal="body_exited" from="shop_area" to="." method="_on_shop_area_body_exited"]
-[connection signal="closed" from="inventory_ui/Inventory" to="inventory_ui" method="_on_inventory_closed"]
-[connection signal="opened" from="inventory_ui/Inventory" to="inventory_ui" method="_on_inventory_opened"]
 
 [editable path="Player"]

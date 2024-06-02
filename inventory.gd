@@ -1,29 +1,19 @@
 extends Control
 
-signal opened
-signal closed
-
-var isOpen = false
 
 @onready var inventory = preload("res://playerInventory.tres")
 @onready var slots = $NinePatchRect/GridContainer.get_children()
 
 
-func _ready():
-	update()
-
-func update():
-	for i in range(min(inventory.slots.size(),slots.size())):
-		slots[i].update(inventory.slots[i])
+func _input(event):
+	if event.is_action_pressed("toggle_inventory"):
+		on_inventory_update()
 
 
-func open():
-	visible = true
-	isOpen = true
-	opened.emit()
-
-
-func close():
-	visible = false
-	isOpen = false
-	closed.emit()
+func on_inventory_update():
+	for item in Global.inventory:
+		var slot = Global.slot_scene.instantiate()
+		if item !=null:
+			slots.set_item(item,1)
+func cleargrid():
+	pass
