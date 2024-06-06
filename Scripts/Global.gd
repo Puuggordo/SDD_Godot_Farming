@@ -46,17 +46,17 @@ func add_item(item):
 			return true
 	return false
 
-var item = {
+var shop_items = {
 	0 : {
-		"Name" : "Strawberry seed",
-		"Cost" : 100,
+		"Name": "Strawberry seed",
+		"Cost": 100,
 	},
 	1 : {
-		"Name" : "Lettuce seed",
-		"Cost" : 500
+		"Name": "Lettuce seed",
+		"Cost": 500
 	},
 	2 : {
-		"Name" : "Corn seed",
-		"Cost" : 1000
+		"Name": "Corn seed",
+		"Cost": 1000
 	}
 }

@@ -31,5 +31,11 @@ func pickup_item():
 
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("animator"):
+	if body is CharacterBody2D:
 		pickup_item()
+	 # adds specific key pair into array
+	#var inv = []
+	#for i in range(Global.inventory.size()):
+		#if Global.inventory[i] !=null:
+			#inv.append(Global.inventory[i]["max_stack"])
+	#print (inv)

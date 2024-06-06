@@ -981,6 +981,7 @@ quantity = 1
 item_type = "icon"
 item_name = "godoticon"
 description = "descricon"
+max_stack = 1
 item_texture = ExtResource("18_48bsk")
 
 [connection signal="body_entered" from="front/belowstall" to="front" method="_on_belowstall_body_entered"]

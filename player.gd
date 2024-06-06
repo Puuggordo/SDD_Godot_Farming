@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 75
-var direction
-
-func get_input():
+func get_input(speed):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if Input.is_action_pressed("left"):
 		animator(true,"left")
@@ -47,5 +44,5 @@ func animator(movement, direction):
 
 
 func _physics_process(_delta):
-	get_input()
+	get_input(75)
 	move_and_slide()

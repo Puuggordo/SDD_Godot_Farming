@@ -2,39 +2,42 @@ extends CanvasLayer
 
 var current_item = 0
 var select = 0
-
+@onready var icon = $Control/AnimatedSprite2D
+@onready var name_label = $Control/Name
+@onready var cost_label = $Control/Cost
+@onready var buy_button = $Control/Buy
 func _ready():
 	switchItem(current_item)
 
 
 func switchItem(select):
-	for i in range(Global.item.size()):
+	for i in range(Global.shop_items.size()):
 		if select == i:
 			current_item = select
-			$Control/AnimatedSprite2D.play(Global.item[current_item]["Name"])
-			$Control/Name.text = Global.item[current_item]["Name"]
-			$Control/Cost.text = "Cost: " + str(Global.item[current_item]["Cost"])
+			icon.play(Global.shop_items[current_item]["Name"])
+			name_label.text = Global.shop_items[current_item]["Name"]
+			cost_label.text = "Cost: " + str(Global.shop_items[current_item]["Cost"])
 
 
 func buy_button_display():
 	if current_item == 0 and Global.strawberry_buy == false:
-			$Control/Buy.text = "Buy"
-			$Control/Buy.disabled = false
+			buy_button.text = "Buy"
+			buy_button.disabled = false
 	elif current_item == 1 and Global.lettuce_buy == false:
-			$Control/Buy.text = "Buy"
-			$Control/Buy.disabled = false
+			buy_button.text = "Buy"
+			buy_button.disabled = false
 	elif current_item == 2 and Global.corn_buy == false:
-			$Control/Buy.text = "Buy"
-			$Control/Buy.disabled = false
+			buy_button.text = "Buy"
+			buy_button.disabled = false
 	else:
-		$Control/Buy.text = "Bought"
-		$Control/Buy.disabled = true
+		buy_button.text = "Bought"
+		buy_button.disabled = true
 
 func coin_buy():
-	if Global.coin_number >= Global.item[current_item]["Cost"]:
-		Global.coin_number -= Global.item[current_item]["Cost"]
-		$Control/Buy.text = "Bought"
-		$Control/Buy.disabled = true
+	if Global.coin_number >= Global.shop_items[current_item]["Cost"]:
+		Global.coin_number -= Global.shop_items[current_item]["Cost"]
+		buy_button.text = "Bought"
+		buy_button.disabled = true
 
 
 func _on_next_pressed():
