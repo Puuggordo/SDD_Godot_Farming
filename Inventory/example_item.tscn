@@ -12,6 +12,7 @@ item_type = "example"
 item_name = "test"
 description = "des1"
 item_texture = ExtResource("1_hpcjg")
+effect = "uwu"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)

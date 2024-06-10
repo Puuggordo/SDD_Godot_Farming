@@ -7,6 +7,7 @@ extends Node2D
 @export var description = ""
 @export var max_stack = 5
 @export var item_texture : Texture2D = null
+@export var effect = ""
 @onready var sprite = $Sprite2D
 var scene_path = "res://Inventory/example_item.tscn"
 
@@ -23,16 +24,18 @@ func pickup_item():
 		"quantity":quantity,
 		"type":item_type,
 		"name":item_name,
+		"effect": effect,
 		"texture":item_texture,
 		"scene_path":scene_path,
 		"max_stack":max_stack
 	}
-	Global.add_item(item)
-
+	Global.add_item_to_inventory(item)
+	print(item)
 
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:
 		pickup_item()
+		print(body.example)
 	 # adds specific key pair into array
 	#var inv = []
 	#for i in range(Global.inventory.size()):

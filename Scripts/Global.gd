@@ -1,7 +1,9 @@
 extends Node
 
 var plant_selected
-var coin_number = 0
+var current_weather = "none"
+var current_day = 0
+var player_funds = 1000
 var carrot_number = 0
 var onion_number = 0
 var strawberry_number = 0
@@ -18,11 +20,34 @@ var inventory = []
 signal inventoryUpdate
 @onready var slot_scene = preload("res://slot.tscn")
 
+var shop_items = []
+
+func array_checker(array: Array, value: String):
+	var inv = []
+	for r in range(array.size()):
+		if array[r] !=null:
+			inv.append(array[r][value])
+	print(inv)
+
 func _ready():
 	inventory.resize(15)
+	shop_items.resize(3)
+
+func add_item_to_shop(item):
+	for i in range(shop_items.size()):
+		var slot = shop_items[i]
+		if slot != null and slot["name"] == item["name"]:
+			shop_items.remove_at(i)
+			shop_items.insert(i,item)
+			return true
+		elif slot == null:
+			shop_items.remove_at(i)
+			shop_items.insert(i,item)
+			return true
+	return false
 
 
-func add_item(item):
+func add_item_to_inventory(item):
 	for i in range(inventory.size()):
 		var slot = inventory[i]
 		if slot != null and slot["name"] == item["name"]:
@@ -46,17 +71,5 @@ func add_item(item):
 			return true
 	return false
 
-var shop_items = {
-	0 : {
-		"Name": "Strawberry seed",
-		"Cost": 100,
-	},
-	1 : {
-		"Name": "Lettuce seed",
-		"Cost": 500
-	},
-	2 : {
-		"Name": "Corn seed",
-		"Cost": 1000
-	}
-}
+func apply_effect(effect):
+	

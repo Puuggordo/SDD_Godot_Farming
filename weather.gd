@@ -1,7 +1,6 @@
 extends Node
 
-var current_weather
-var current_day = 0
+@export_range(0,100) var floatefwfe:float = 0
 var difficulty
 var weather_list = ["rain", "wind", "heat", "drought", "snow"]
 var early_game = [0.3, 0.1, 0.1, 0.1, 0]
@@ -40,17 +39,17 @@ func weather_picker(weights: Array):
 		weights_sorted.append(sum)
 	for i in range(5):
 		if picker < weights_sorted[i]:
-			current_weather = weather_list[i]
+			Global.current_weather = weather_list[i]
 			break
 		elif picker >= weights_sorted[-1]:
-			current_weather = "none"
+			Global.current_weather = "none"
 			break
 
 
 func tester(weight):
 	for i in range (7):
 		weather_picker(weight)
-		output.append(current_weather)
+		output.append(Global.current_weather)
 	for i in range(output.size()):
 		if output[i]=="rain":
 			water +=1
@@ -73,9 +72,9 @@ func tester(weight):
 
 
 func _on_button_pressed():
-	current_day += 1
-	weather_picker(difficulty_scaler(current_day))
-	print ("date: ", current_day)
+	Global.current_day += 1
+	weather_picker(difficulty_scaler(Global.current_day))
+	print ("date: ", Global.current_day)
 	print("difficulty: ", difficulty)
-	print("weather: ", current_weather)
+	print("weather: ", Global.current_weather)
 	print("")

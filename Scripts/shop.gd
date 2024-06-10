@@ -2,65 +2,33 @@ extends CanvasLayer
 
 var current_item = 0
 var select = 0
-@onready var icon = $Control/AnimatedSprite2D
-@onready var name_label = $Control/Name
-@onready var cost_label = $Control/Cost
-@onready var buy_button = $Control/Buy
-func _ready():
-	switchItem(current_item)
+@onready var name_label = $ScrollContainer/VBoxContainer/ItemContainer/Item/Name
+@onready var cost_label = $ScrollContainer/VBoxContainer/ItemContainer/Item/Cost
+@onready var quantity_label = $ScrollContainer/VBoxContainer/ItemContainer/Item/Quantity
+@onready var item_container = $ScrollContainer/VBoxContainer/ItemContainer.get_child_count()
+@onready var total_label = $ScrollContainer/VBoxContainer/Total
+var sum = 0
 
-
-func switchItem(select):
+func _process(delta):
+	total_label.text = "Total: " + str(sum)
+	cart_update()
+func cart_update():
+	sum = 0
 	for i in range(Global.shop_items.size()):
-		if select == i:
-			current_item = select
-			icon.play(Global.shop_items[current_item]["Name"])
-			name_label.text = Global.shop_items[current_item]["Name"]
-			cost_label.text = "Cost: " + str(Global.shop_items[current_item]["Cost"])
+		if Global.shop_items[i] !=null:
+			sum += Global.shop_items[i]["cost"]*Global.shop_items[i]["quantity"]
 
 
-func buy_button_display():
-	if current_item == 0 and Global.strawberry_buy == false:
-			buy_button.text = "Buy"
-			buy_button.disabled = false
-	elif current_item == 1 and Global.lettuce_buy == false:
-			buy_button.text = "Buy"
-			buy_button.disabled = false
-	elif current_item == 2 and Global.corn_buy == false:
-			buy_button.text = "Buy"
-			buy_button.disabled = false
+func currency_checker():
+	var sufficent_funds
+	if Global.player_funds >= sum:
+		Global.player_funds-=sum
+		sum = 0
+		sufficent_funds =  true
 	else:
-		buy_button.text = "Bought"
-		buy_button.disabled = true
+		print("Insufficent funds")
+		sufficent_funds = false
+	print(Global.player_funds)
 
-func coin_buy():
-	if Global.coin_number >= Global.shop_items[current_item]["Cost"]:
-		Global.coin_number -= Global.shop_items[current_item]["Cost"]
-		buy_button.text = "Bought"
-		buy_button.disabled = true
-
-
-func _on_next_pressed():
-	switchItem(current_item + 1)
-	buy_button_display()
-
-
-func _on_prev_pressed():
-	switchItem(current_item - 1)
-	buy_button_display()
-
-
-func _on_buy_pressed():
-	if current_item == 0:
-		if Global.strawberry_buy == false:
-			coin_buy()
-			Global.strawberry_buy = true
-	elif current_item == 1:
-		if Global.lettuce_buy == false:
-			coin_buy()
-			Global.lettuce_buy = true
-	elif current_item == 2:
-		if Global.corn_buy == false:
-			coin_buy()
-			Global.corn_buy = true
-
+func _on_button_pressed():
+	currency_checker()

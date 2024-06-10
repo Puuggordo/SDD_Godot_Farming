@@ -974,7 +974,6 @@ item_name = "longstick"
 description = "desc_wood"
 max_stack = 10
 item_texture = ExtResource("17_8d7jr")
-effect = ""
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(142, 182)
@@ -984,7 +983,6 @@ item_name = "godoticon"
 description = "descricon"
 max_stack = 2
 item_texture = ExtResource("18_48bsk")
-effect = null
 
 [connection signal="body_entered" from="front/belowstall" to="front" method="_on_belowstall_body_entered"]
 [connection signal="body_entered" from="front/abovestall" to="front" method="_on_abovestall_body_entered"]
