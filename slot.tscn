@@ -10,6 +10,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 script = ExtResource("1_evd5e")
 
 [node name="background" type="Sprite2D" parent="."]
@@ -22,10 +23,10 @@ layout_mode = 0
 offset_right = 20.0
 offset_bottom = 20.0
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
+[node name="item" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-
-[node name="item" type="Sprite2D" parent="CenterContainer/Panel"]
+stretch_mode = 3
 
 [node name="ItemQuantity" type="Label" parent="."]
 custom_minimum_size = Vector2(60, 65)

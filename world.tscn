@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=32 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
@@ -12,12 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://dn3dnhlfv1fci" path="res://scenes/farming/sellzone.tscn" id="9_21fak"]
 [ext_resource type="Script" path="res://Scripts/coin_amount.gd" id="9_o8pld"]
 [ext_resource type="PackedScene" uid="uid://hpxhs5ijn0f3" path="res://scenes/farming/strawberry_seedpack.tscn" id="11_oyphr"]
-[ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://scenes/farming/shop.tscn" id="12_i8hnp"]
+[ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://Inventory/shop.tscn" id="12_i8hnp"]
 [ext_resource type="Script" path="res://inventory_ui.gd" id="14_d07n6"]
 [ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory.tscn" id="15_5ywqk"]
 [ext_resource type="PackedScene" uid="uid://cvsih7eyw8h0" path="res://Inventory/example_item.tscn" id="16_f7tpb"]
-[ext_resource type="Texture2D" uid="uid://cedjn28l1bclt" path="res://Sprites/healthbarUnder.png" id="17_8d7jr"]
-[ext_resource type="Texture2D" uid="uid://8pn4roac3kh6" path="res://Sprites/InventoryRect.png" id="18_48bsk"]
+[ext_resource type="Texture2D" uid="uid://beq5xb5xyy4bx" path="res://flowers/imageedit_5_9258663390.jpg" id="17_l7gm4"]
+[ext_resource type="Script" path="res://Scripts/item.gd" id="18_ir4t8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yna"]
 texture = ExtResource("1_7c0cg")
@@ -816,6 +816,45 @@ size = Vector2(32, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4taq"]
 size = Vector2(32, 20)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rdwqk"]
+radius = 24.1661
+
+[sub_resource type="Resource" id="Resource_mhgt1"]
+resource_local_to_scene = true
+script = ExtResource("18_ir4t8")
+quantity = 1
+item_name = "Rose"
+type = "flower"
+item_texture = ExtResource("17_l7gm4")
+max_stack = 5
+cost = 500
+inventory_quantity = 0
+shop_quantity = 0
+strengths = Array[int]([])
+weaknesses = Array[int]([])
+effect_pollen = 0
+effect_growth = 0
+effect_add_strengths = Array[int]([])
+effect_remove_weaknesses = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_u6psy"]
+resource_local_to_scene = true
+script = ExtResource("18_ir4t8")
+quantity = 3
+item_name = "Rose"
+type = "flower"
+item_texture = ExtResource("17_l7gm4")
+max_stack = 5
+cost = 500
+inventory_quantity = 0
+shop_quantity = 0
+strengths = Array[int]([])
+weaknesses = Array[int]([])
+effect_pollen = 0
+effect_growth = 0
+effect_add_strengths = Array[int]([])
+effect_remove_weaknesses = Array[int]([])
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gduqr"]
 atlas = ExtResource("1_7c0cg")
 region = Rect2(64, 80, 16, 16)
@@ -830,9 +869,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rdwqk"]
-radius = 24.1661
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_3tpjl")
@@ -860,6 +896,7 @@ z_index = 1
 position = Vector2(178, 174)
 
 [node name="Camera2D" parent="Player" index="2"]
+enabled = false
 limit_left = 0
 limit_top = 0
 limit_right = 590
@@ -883,8 +920,35 @@ shape = SubResource("RectangleShape2D_euv22")
 position = Vector2(336, 124)
 shape = SubResource("RectangleShape2D_c4taq")
 
+[node name="sellzone" parent="." instance=ExtResource("9_21fak")]
+position = Vector2(297, 187)
+
+[node name="carrot_seedpack" parent="." instance=ExtResource("3_npg2j")]
+position = Vector2(255, 174)
+
+[node name="onion_seedpack" parent="." instance=ExtResource("4_8yu1j")]
+position = Vector2(275, 221)
+
+[node name="strawberry_seedpack" parent="." instance=ExtResource("11_oyphr")]
+position = Vector2(223, 196)
+
+[node name="shop_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shop_area"]
+position = Vector2(336, 137)
+shape = SubResource("CircleShape2D_rdwqk")
+
+[node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
+position = Vector2(93, 175)
+item_data = SubResource("Resource_mhgt1")
+
+[node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
+position = Vector2(142, 182)
+item_data = SubResource("Resource_u6psy")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
+follow_viewport_enabled = true
 
 [node name="crop_amount" parent="CanvasLayer" instance=ExtResource("6_sgyun")]
 anchors_preset = 3
@@ -932,30 +996,8 @@ size_flags_vertical = 1
 theme_override_font_sizes/font_size = 20
 vertical_alignment = 1
 
-[node name="sellzone" parent="." instance=ExtResource("9_21fak")]
-position = Vector2(297, 187)
-
-[node name="shop" parent="." instance=ExtResource("12_i8hnp")]
-visible = false
-
-[node name="carrot_seedpack" parent="." instance=ExtResource("3_npg2j")]
-position = Vector2(255, 174)
-
-[node name="onion_seedpack" parent="." instance=ExtResource("4_8yu1j")]
-position = Vector2(275, 221)
-
-[node name="strawberry_seedpack" parent="." instance=ExtResource("11_oyphr")]
-position = Vector2(223, 196)
-
-[node name="shop_area" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="shop_area"]
-position = Vector2(336, 137)
-shape = SubResource("CircleShape2D_rdwqk")
-
 [node name="inventory_ui" type="CanvasLayer" parent="."]
 process_mode = 3
-visible = false
 scale = Vector2(3.5, 3.5)
 transform = Transform2D(3.5, 0, 0, 3.5, 0, 0)
 script = ExtResource("14_d07n6")
@@ -966,25 +1008,8 @@ offset_top = 55.2553
 offset_right = 96.0961
 offset_bottom = 55.2553
 
-[node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
-position = Vector2(93, 175)
-quantity = 3
-item_type = "wood"
-item_name = "longstick"
-description = "desc_wood"
-max_stack = 10
-item_texture = ExtResource("17_8d7jr")
-effect = ""
-
-[node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
-position = Vector2(142, 182)
-quantity = 1
-item_type = "icon"
-item_name = "godoticon"
-description = "descricon"
-max_stack = 2
-item_texture = ExtResource("18_48bsk")
-effect = null
+[node name="shop" parent="." instance=ExtResource("12_i8hnp")]
+visible = false
 
 [connection signal="body_entered" from="front/belowstall" to="front" method="_on_belowstall_body_entered"]
 [connection signal="body_entered" from="front/abovestall" to="front" method="_on_abovestall_body_entered"]

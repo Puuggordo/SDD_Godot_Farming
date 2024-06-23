@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://vcdoku1x7cjg"]
 
 [ext_resource type="Script" path="res://Scripts/shop.gd" id="1_222po"]
-[ext_resource type="PackedScene" uid="uid://cqt3el0jmrax" path="res://scenes/farming/shop_item.tscn" id="2_ofy8i"]
+[ext_resource type="PackedScene" uid="uid://cqt3el0jmrax" path="res://Inventory/shop_item.tscn" id="2_ofy8i"]
 [ext_resource type="Texture2D" uid="uid://caxo7ud45bsw4" path="res://Sprites/inventorySlot.png" id="3_4e864"]
 [ext_resource type="Texture2D" uid="uid://b7yke8q0hj18v" path="res://icon.svg" id="3_j1jir"]
 [ext_resource type="Texture2D" uid="uid://dnqnvsa18i0q0" path="res://Sprites/TilesetWallSimple-transparentbg.png" id="5_3djjd"]

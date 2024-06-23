@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-var example = 0
-
-
 func get_input(speed):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if Input.is_action_pressed("left"):

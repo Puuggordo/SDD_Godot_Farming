@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dyo1icmytxftu"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_4dh3x"]
+[ext_resource type="Texture2D" uid="uid://beq5xb5xyy4bx" path="res://flowers/imageedit_5_9258663390.jpg" id="1_j2par"]
+
+[resource]
+script = ExtResource("1_4dh3x")
+quantity = 1
+item_name = "Rose"
+type = "flower"
+item_texture = ExtResource("1_j2par")
+max_stack = 5
+cost = 500
+inventory_quantity = 0
+shop_quantity = 0
+strengths = Array[int]([])
+weaknesses = Array[int]([])
+effect_pollen = 0
+effect_growth = 0
+effect_add_strengths = Array[int]([])
+effect_remove_weaknesses = Array[int]([])
