@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqt3el0jmrax"]
+
+[ext_resource type="Script" path="res://Inventory/shop_item.gd" id="1_0amd4"]
+[ext_resource type="Texture2D" uid="uid://b7yke8q0hj18v" path="res://icon.svg" id="2_2aky4"]
+
+[node name="Item" type="Control"]
+custom_minimum_size = Vector2(444, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 64.0
+script = ExtResource("1_0amd4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 444.0
+offset_bottom = 64.0
+
+[node name="Quantity" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 383.0
+offset_top = 3.0
+offset_right = 423.0
+offset_bottom = 54.0
+text = "0"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="Up" type="Button" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_right = 441.0
+offset_bottom = 31.0
+text = "^"
+
+[node name="Down" type="Button" parent="."]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 61.0
+offset_right = 458.0
+offset_bottom = 92.0
+rotation = 3.14159
+text = "^"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 51.0
+offset_bottom = 51.0
+texture = ExtResource("2_2aky4")
+expand_mode = 2
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+offset_left = 55.0
+offset_top = 14.0
+offset_right = 102.0
+offset_bottom = 37.0
+text = "Name"
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 2
+offset_left = 215.0
+offset_top = 14.0
+offset_right = 306.0
+offset_bottom = 37.0
+text = "0000 Honey"
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 2
+offset_left = 310.0
+offset_top = 14.0
+offset_right = 381.0
+offset_bottom = 37.0
+text = "Amount: "
+
+[connection signal="pressed" from="Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="Down" to="." method="_on_down_pressed"]

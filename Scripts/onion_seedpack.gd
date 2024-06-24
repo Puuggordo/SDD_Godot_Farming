@@ -5,7 +5,8 @@ var seed_type = "onion"
 
 
 func _ready():
-	$AnimatedSprite2D.play("default")
+	#$AnimatedSprite2D.play("default")
+	pass
 
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
