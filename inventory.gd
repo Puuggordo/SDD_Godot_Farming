@@ -9,7 +9,7 @@ func _ready():
 	Global.inventoryUpdate.connect(on_inventory_update)
 	on_inventory_update()
 
-
+# When the singal to update the inventory is received 
 func on_inventory_update():
 	clear_grid()
 	for item in Global.inventory:

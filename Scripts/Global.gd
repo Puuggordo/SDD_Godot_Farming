@@ -59,6 +59,7 @@ func add_item_to_inventory(item: Item):
 			if slot.quantity + item.quantity <= item.max_stack:
 				# then add the item quantities together
 				slot.quantity += item.quantity
+				# Send a singal to update the inventory
 				inventoryUpdate.emit()
 				return
 			# If the quantity is over the max stack
@@ -81,6 +82,7 @@ func add_item_to_inventory(item: Item):
 			# Then set the new item as a new slot
 			inventory.remove_at(i)
 			inventory.insert(i,item)
+			# Send a singal to update the inventory
 			inventoryUpdate.emit()
 			return
 	return
@@ -94,6 +96,7 @@ func remove_item_from_inventory(item: Item):
 			slot.quantity -= 1
 			if slot.quantity <= 0:
 				slot = null
+			# Send a singal to update the inventory
 			inventoryUpdate.emit()
 			return
 	return

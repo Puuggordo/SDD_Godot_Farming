@@ -35,18 +35,23 @@ func _get_drag_data(at_position):
 		# This is to 
 		Global.inventory.remove_at(selected_item_index)
 		Global.inventory.insert(selected_item_index, null)
+		# Put selected item and its index into a dictonary called data
 		var data = {} 
 		data.selected_item = selected_item
 		data.selected_item_index = selected_item_index
+		# Set the current item being dragged = data (There is an item being dragged)
 		Global.current_drag_data = data
-		var drag_preview = drag_preview_scene.instantiate()
-		get_parent().add_child(drag_preview)
-		drag_preview.texture = selected_item.item_texture
+		#var drag_preview = drag_preview_scene.instantiate()
+		#get_parent().add_child(drag_preview)
+		#drag_preview.texture = selected_item.item_texture
+		# Send a singal to update the inventory
 		Global.inventoryUpdate.emit()
+		# Give the data to the _can_drop_data function
 		return data
 
-
+# Checks if the the data can be dropped at the current mouse position (If the node under the mouse position is a slot)
 func _can_drop_data(at_position, data):
+	# If true, then give the data to the _drop_data function
 	return data
 
 
@@ -60,7 +65,9 @@ func _drop_data(at_position, data):
 	Global.inventory.insert(data.selected_item_index,new_item)
 	Global.inventory.remove_at(new_item_index)
 	Global.inventory.insert(new_item_index,data.selected_item)
+	# Set the current item being dragged = null (There is no item being dragged)
 	Global.current_drag_data = null
+	# Send a singal to update the inventory
 	Global.inventoryUpdate.emit()
 
 func _notification(what: int) -> void:
@@ -72,5 +79,6 @@ func _notification(what: int) -> void:
 			Global.inventory.remove_at(Global.current_drag_data.selected_item_index)
 			# Insert the dragged slot back to its previous position
 			Global.inventory.insert(Global.current_drag_data.selected_item_index, Global.current_drag_data.selected_item)
+			# Send a singal to update the inventory
 			Global.inventoryUpdate.emit()
 
