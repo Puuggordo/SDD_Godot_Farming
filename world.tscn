@@ -819,7 +819,7 @@ size = Vector2(32, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdwqk"]
 radius = 24.1661
 
-[sub_resource type="Resource" id="Resource_mhgt1"]
+[sub_resource type="Resource" id="Resource_tth8v"]
 resource_local_to_scene = true
 script = ExtResource("18_ir4t8")
 quantity = 1
@@ -837,7 +837,7 @@ effect_growth = 0
 effect_add_strengths = Array[int]([])
 effect_remove_weaknesses = Array[int]([])
 
-[sub_resource type="Resource" id="Resource_u6psy"]
+[sub_resource type="Resource" id="Resource_huwwn"]
 resource_local_to_scene = true
 script = ExtResource("18_ir4t8")
 quantity = 3
@@ -896,7 +896,6 @@ z_index = 1
 position = Vector2(178, 174)
 
 [node name="Camera2D" parent="Player" index="2"]
-enabled = false
 limit_left = 0
 limit_top = 0
 limit_right = 590
@@ -940,11 +939,11 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_mhgt1")
+item_data = SubResource("Resource_tth8v")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(142, 182)
-item_data = SubResource("Resource_u6psy")
+item_data = SubResource("Resource_huwwn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -998,6 +997,7 @@ vertical_alignment = 1
 
 [node name="inventory_ui" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 scale = Vector2(3.5, 3.5)
 transform = Transform2D(3.5, 0, 0, 3.5, 0, 0)
 script = ExtResource("14_d07n6")

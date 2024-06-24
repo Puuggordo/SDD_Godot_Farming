@@ -50,25 +50,25 @@ func add_item_to_shop(item):
 
 
 func add_item_to_inventory(item: Item):
-	#loops through the inventory
+	# Loops through the inventory
 	for i in range(inventory.size()):
 		var slot = inventory[i]
-		#if the items match
+		# If the items match
 		if slot != null and slot.item_name == item.item_name:
-			#and if the quantity is less than the max stack
+			# And if the quantity is less than the max stack
 			if slot.quantity + item.quantity <= item.max_stack:
-				#then add the item quantities together
+				# then add the item quantities together
 				slot.quantity += item.quantity
 				inventoryUpdate.emit()
 				return
-			#if the quantity is over the max stack
+			# If the quantity is over the max stack
 			else:
-				#then take the remainder
+				# Then take the remainder
 				var space_left = item.max_stack - slot.quantity
-				#set the slot quantity to the max
+				# Set the slot quantity to the max
 				slot.quantity = item.max_stack
 				item.quantity -= space_left
-				#and add the remainder as a new item
+				# And add the remainder as a new item
 				for r in range(inventory.size()):
 					if slot == null:
 						inventory.remove_at(r)
@@ -76,9 +76,9 @@ func add_item_to_inventory(item: Item):
 						return
 	for i in range(inventory.size()):
 		var slot = inventory[i]
-		#if there are no matches (if the current looped item is null)
+		# If there are no matches (if the current looped item is null)
 		if slot == null:
-			#then set the new item as a new slot
+			# Then set the new item as a new slot
 			inventory.remove_at(i)
 			inventory.insert(i,item)
 			inventoryUpdate.emit()
@@ -86,10 +86,10 @@ func add_item_to_inventory(item: Item):
 	return
 
 func remove_item_from_inventory(item: Item):
-	#loops through the inventory
+	# Loops through the inventory
 	for i in range(inventory.size()):
 		var slot: Item = inventory[i]
-		#if the items match
+		# If the items match
 		if slot != null and slot.item_name == item.item_name:
 			slot.quantity -= 1
 			if slot.quantity <= 0:
@@ -98,12 +98,6 @@ func remove_item_from_inventory(item: Item):
 			return
 	return
 
-func swap_items(item_index, target_item_index):
-	var target_item = inventory[target_item_index]
-	var item = inventory[item_index]
-	inventory[target_item_index] = item
-	inventory[item_index] = target_item
-	inventoryUpdate.emit()
 
 func apply_effect(effect):
 	pass
