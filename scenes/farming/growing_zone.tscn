@@ -137,7 +137,7 @@ shape = SubResource("RectangleShape2D_4vxhu")
 [node name="plant_growing" type="AnimatedSprite2D" parent="growing_zone"]
 position = Vector2(8, 3)
 sprite_frames = SubResource("SpriteFrames_uh8yj")
-animation = &"strawberry"
+animation = &"none"
 
 [node name="carrot_timer" type="Timer" parent="growing_zone"]
 wait_time = 5.0

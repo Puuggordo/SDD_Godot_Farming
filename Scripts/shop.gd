@@ -12,6 +12,7 @@ var sum = 0
 func _process(delta):
 	total_label.text = "Total: " + str(sum)
 	cart_update()
+
 func cart_update():
 	sum = 0
 	for i in range(Global.shop_items.size()):

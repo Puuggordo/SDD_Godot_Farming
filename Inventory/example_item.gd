@@ -5,6 +5,8 @@ extends Node2D
 @onready var sprite = $Sprite2D
 var scene_path = "res://Inventory/example_item.tscn"
 
+func _ready():
+	sprite.texture = item_data.item_texture
 
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:
