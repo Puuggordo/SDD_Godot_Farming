@@ -14,6 +14,7 @@ enum weather_types {rain, wind, heat, drought, snow}
 @export_subgroup("Flower")
 @export var strengths: Array[weather_types]
 @export var weaknesses: Array[weather_types]
+@export_file("*png","*jpg", "*jpeg") var growth_stages
 
 @export_subgroup("Fertiliser")
 @export var effect_pollen: int

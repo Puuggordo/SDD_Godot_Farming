@@ -30,6 +30,7 @@ func clear_grid():
 		grid_container.remove_child(child)
 		child.queue_free()
 
+
 func make_items_unique():
 	# Goal is to make sure the item resources in each slot are unique, as data from same resources are shared
 	var unique_items = []

@@ -12,3 +12,7 @@ func _on_shop_area_body_entered(body):
 
 func _on_shop_area_body_exited(_body):
 	$shop.hide()
+
+
+func _on_nextday_button_pressed():
+	Global.current_day += 1

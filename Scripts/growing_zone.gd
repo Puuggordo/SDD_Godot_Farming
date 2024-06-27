@@ -3,9 +3,16 @@ extends StaticBody2D
 var plant = Global.plant_selected
 var plant_growing = false
 var plant_grown = false
+var previous_day = Global.current_day
 
 func _ready():
 	$plant_growing.play("none")
+
+
+func _process(delta):
+	if Global.current_day == previous_day + 1:
+		previous_day = Global.current_day
+		$plant_growing.frame += 1
 
 
 func _physics_process(_delta):
