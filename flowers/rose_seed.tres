@@ -4,29 +4,29 @@
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_fn2c0"]
 [ext_resource type="Texture2D" uid="uid://beq5xb5xyy4bx" path="res://flowers/imageedit_5_9258663390.jpg" id="1_j2par"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vpbdi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fowjd"]
 atlas = ExtResource("1_fn2c0")
-region = Rect2(176, 32, 16, 16)
+region = Rect2(80, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x00pu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l0vi"]
 atlas = ExtResource("1_fn2c0")
-region = Rect2(160, 32, 16, 16)
+region = Rect2(64, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwjkw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_stsow"]
 atlas = ExtResource("1_fn2c0")
-region = Rect2(144, 32, 16, 16)
+region = Rect2(48, 64, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kk4ok"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_btg4e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vpbdi")
+"texture": SubResource("AtlasTexture_fowjd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x00pu")
+"texture": SubResource("AtlasTexture_0l0vi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uwjkw")
+"texture": SubResource("AtlasTexture_stsow")
 }],
 "loop": true,
 "name": &"default",
@@ -46,7 +46,7 @@ shop_quantity = 0
 strengths = Array[int]([])
 weaknesses = Array[int]([])
 growth_stages = null
-growth_frames = SubResource("SpriteFrames_kk4ok")
+growth_frames = SubResource("SpriteFrames_btg4e")
 effect_pollen = 0
 effect_growth = 0
 effect_add_strengths = Array[int]([])

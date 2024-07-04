@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=32 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
@@ -13,10 +13,10 @@
 [ext_resource type="Script" path="res://Scripts/coin_amount.gd" id="9_o8pld"]
 [ext_resource type="PackedScene" uid="uid://hpxhs5ijn0f3" path="res://scenes/farming/strawberry_seedpack.tscn" id="11_oyphr"]
 [ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://Inventory/shop.tscn" id="12_i8hnp"]
+[ext_resource type="Resource" uid="uid://dyo1icmytxftu" path="res://flowers/rose_seed.tres" id="13_tkxlp"]
 [ext_resource type="Script" path="res://inventory_ui.gd" id="14_d07n6"]
 [ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory.tscn" id="15_5ywqk"]
 [ext_resource type="PackedScene" uid="uid://cvsih7eyw8h0" path="res://Inventory/example_item.tscn" id="16_f7tpb"]
-[ext_resource type="Texture2D" uid="uid://beq5xb5xyy4bx" path="res://flowers/imageedit_5_9258663390.jpg" id="17_l7gm4"]
 [ext_resource type="Script" path="res://Scripts/item.gd" id="18_ir4t8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yna"]
@@ -823,7 +823,7 @@ radius = 24.1661
 atlas = ExtResource("1_7c0cg")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_betir"]
+[sub_resource type="Resource" id="Resource_stb43"]
 resource_local_to_scene = true
 script = ExtResource("18_ir4t8")
 quantity = 1
@@ -832,25 +832,6 @@ type = "flower"
 item_texture = SubResource("AtlasTexture_8e3nq")
 max_stack = 8
 cost = 200
-inventory_quantity = 0
-shop_quantity = 0
-strengths = Array[int]([])
-weaknesses = Array[int]([])
-growth_stages = null
-effect_pollen = 0
-effect_growth = 0
-effect_add_strengths = Array[int]([])
-effect_remove_weaknesses = Array[int]([])
-
-[sub_resource type="Resource" id="Resource_g1pvj"]
-resource_local_to_scene = true
-script = ExtResource("18_ir4t8")
-quantity = 3
-item_name = "Rose"
-type = "flower"
-item_texture = ExtResource("17_l7gm4")
-max_stack = 5
-cost = 500
 inventory_quantity = 0
 shop_quantity = 0
 strengths = Array[int]([])
@@ -945,11 +926,11 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_betir")
+item_data = SubResource("Resource_stb43")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(142, 182)
-item_data = SubResource("Resource_g1pvj")
+item_data = ExtResource("13_tkxlp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

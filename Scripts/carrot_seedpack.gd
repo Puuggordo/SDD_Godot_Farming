@@ -1,5 +1,5 @@
 extends StaticBody2D
-
+var item_data = "hi"
 var selected = false
 var seed_type = "carrot"
 
