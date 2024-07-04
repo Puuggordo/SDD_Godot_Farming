@@ -20,6 +20,7 @@ inventory_quantity = 0
 shop_quantity = 0
 strengths = Array[int]([])
 weaknesses = Array[int]([])
+growth_stages = "<null>"
 effect_pollen = 0
 effect_growth = 0
 effect_add_strengths = Array[int]([])

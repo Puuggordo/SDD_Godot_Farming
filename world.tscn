@@ -823,7 +823,7 @@ radius = 24.1661
 atlas = ExtResource("1_7c0cg")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_b5edv"]
+[sub_resource type="Resource" id="Resource_betir"]
 resource_local_to_scene = true
 script = ExtResource("18_ir4t8")
 quantity = 1
@@ -836,12 +836,13 @@ inventory_quantity = 0
 shop_quantity = 0
 strengths = Array[int]([])
 weaknesses = Array[int]([])
+growth_stages = null
 effect_pollen = 0
 effect_growth = 0
 effect_add_strengths = Array[int]([])
 effect_remove_weaknesses = Array[int]([])
 
-[sub_resource type="Resource" id="Resource_ashuu"]
+[sub_resource type="Resource" id="Resource_g1pvj"]
 resource_local_to_scene = true
 script = ExtResource("18_ir4t8")
 quantity = 3
@@ -854,6 +855,7 @@ inventory_quantity = 0
 shop_quantity = 0
 strengths = Array[int]([])
 weaknesses = Array[int]([])
+growth_stages = null
 effect_pollen = 0
 effect_growth = 0
 effect_add_strengths = Array[int]([])
@@ -943,11 +945,11 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_b5edv")
+item_data = SubResource("Resource_betir")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(142, 182)
-item_data = SubResource("Resource_ashuu")
+item_data = SubResource("Resource_g1pvj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 var plant = Global.plant_selected
 var plant_growing = false

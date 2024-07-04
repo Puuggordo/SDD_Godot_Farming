@@ -1,7 +1,37 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dyo1icmytxftu"]
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://dyo1icmytxftu"]
 
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_4dh3x"]
+[ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_fn2c0"]
 [ext_resource type="Texture2D" uid="uid://beq5xb5xyy4bx" path="res://flowers/imageedit_5_9258663390.jpg" id="1_j2par"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpbdi"]
+atlas = ExtResource("1_fn2c0")
+region = Rect2(176, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x00pu"]
+atlas = ExtResource("1_fn2c0")
+region = Rect2(160, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwjkw"]
+atlas = ExtResource("1_fn2c0")
+region = Rect2(144, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk4ok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpbdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x00pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwjkw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
 
 [resource]
 script = ExtResource("1_4dh3x")
@@ -15,6 +45,8 @@ inventory_quantity = 0
 shop_quantity = 0
 strengths = Array[int]([])
 weaknesses = Array[int]([])
+growth_stages = null
+growth_frames = SubResource("SpriteFrames_kk4ok")
 effect_pollen = 0
 effect_growth = 0
 effect_add_strengths = Array[int]([])
