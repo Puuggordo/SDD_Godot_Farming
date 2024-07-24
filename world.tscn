@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=37 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/coin_amount.gd" id="9_o8pld"]
 [ext_resource type="PackedScene" uid="uid://hpxhs5ijn0f3" path="res://scenes/farming/strawberry_seedpack.tscn" id="11_oyphr"]
 [ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://Inventory/shop.tscn" id="12_i8hnp"]
-[ext_resource type="Resource" uid="uid://ca6qcynhj4psp" path="res://flowers/snowdrop_seed.tres" id="12_mhppf"]
+[ext_resource type="Script" path="res://Scripts/item.gd" id="12_sba0i"]
 [ext_resource type="Resource" uid="uid://dyo1icmytxftu" path="res://flowers/rose_seed.tres" id="13_tkxlp"]
 [ext_resource type="Script" path="res://inventory_ui.gd" id="14_d07n6"]
 [ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory.tscn" id="15_5ywqk"]
@@ -819,6 +819,68 @@ size = Vector2(32, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdwqk"]
 radius = 24.1661
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpc0k"]
+atlas = ExtResource("1_7c0cg")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3lm5"]
+atlas = ExtResource("1_7c0cg")
+region = Rect2(112, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytty7"]
+atlas = ExtResource("1_7c0cg")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3hrs"]
+atlas = ExtResource("1_7c0cg")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5wiak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpc0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3lm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytty7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3hrs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e3nq"]
+atlas = ExtResource("1_7c0cg")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="Resource" id="Resource_o6pi6"]
+resource_local_to_scene = true
+script = ExtResource("12_sba0i")
+quantity = 1
+item_name = "Snowdrop"
+type = "flower"
+item_texture = SubResource("AtlasTexture_8e3nq")
+max_stack = 8
+cost = 200
+inventory_quantity = 0
+shop_quantity = 0
+strengths = Array[int]([])
+weaknesses = Array[int]([])
+pollen_range_min = 0
+pollen_range_max = 0
+growth_stages = "res://scenes/farming/farmingTilesheetComplete.png"
+growth_frames = SubResource("SpriteFrames_5wiak")
+effect_pollen = 0
+effect_growth = 0
+effect_add_strengths = Array[int]([])
+effect_remove_weaknesses = Array[int]([])
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gduqr"]
 atlas = ExtResource("1_7c0cg")
 region = Rect2(64, 80, 16, 16)
@@ -903,7 +965,7 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = ExtResource("12_mhppf")
+item_data = SubResource("Resource_o6pi6")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(142, 182)

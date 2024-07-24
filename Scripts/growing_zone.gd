@@ -1,9 +1,11 @@
 extends Node2D
 
 var plant
-var plant_growing = false
-var plant_grown = false
+var flower_growing = false
+var flower_grown = false
 var previous_day = Global.current_day
+var flower_alive = true
+var item_data : Item
 @onready var plant_growth_animator = $plant_growing
 
 
@@ -12,29 +14,28 @@ func _ready():
 
 
 func _process(delta):
+	#flower_affinities_handler()
 	if Global.current_day == previous_day + 1:
 		previous_day = Global.current_day
-		var max_frames = plant_growth_animator.get_sprite_frames().get_frame_count("default")
-		if plant_growth_animator.frame == -1:
-			print("max growth")
-		else:
-			plant_growth_animator.frame += 1
-
-
-func _physics_process(_delta):
-	if plant_growing == false:
-		plant = Global.plant_selected
+		var max_frames = plant_growth_animator.get_sprite_frames().get_frame_count("default")-1
+		if flower_alive and max_frames != 0:
+			print(max_frames)
+			if plant_growth_animator.frame == max_frames:
+				flower_grown = true
+				print("grown")
+			else:
+				plant_growth_animator.frame += 1
 
 
 func _on_area_2d_area_entered(area):
 	var item_object = area.get_parent()
-	if "item_data" in item_object and !plant_growing:
-		var item_data : Item = item_object.item_data
+	if "item_data" in item_object and !flower_growing:
+		item_data = item_object.item_data
 		#print(plant_growth_animator.get_sprite_frames().get_animation_names())
 		if item_data.type == "flower":
 			plant_growth_animator.set_sprite_frames(item_data.growth_frames)
 			plant_growth_animator.play("default")
-			plant_growing = true
+			flower_growing = true
 		elif item_data.type == "fertiliser":
 			pass
 
@@ -42,13 +43,13 @@ func _on_area_2d_area_entered(area):
 func flower_affinities_handler():
 	var picker = randf()
 	if Global.current_weather != "none":
-		for strengths in strengths_array:
+		for strengths in item_data.strengths:
 			if Global.current_weather == strengths and picker<=0.25:
 				flower_alive = false
 				break
 			else:
 				break
-		for weaknesses in weaknesses_array:
+		for weaknesses in item_data.weaknesses:
 			if Global.current_weather == weaknesses and picker<=0.75:
 				flower_alive = false
 				break
@@ -59,32 +60,19 @@ func flower_affinities_handler():
 		else:
 			flower_alive = true
 
-func flower_growth():
-	growth_state
-	fully_grown
-	max_growth
-	if Global.next_day:
-		growth_state +=1
-	if growth_state == max_growth:
-		fully_grown = true	
-
-	sprite.play(growth_state)
-
 
 func flower_resource():
-	if fully_grown:
-		min_pollen = flower_properties[pollen_range_min]
-		max_pollen = flower_properties[pollen_range_max]
-		pollen_output = randi_range(min_pollen, max_pollen)
+	if item_data != null:
+		var min_pollen = item_data.pollen_range_min
+		var max_pollen = item_data.pollen_range_max
+		var pollen_output = randi_range(min_pollen, max_pollen)
 		Global.player_pollen += pollen_output
+		print(Global.player_pollen)
 
-
-func _process(delta):
-	flower_affinities_handler()
-	if flower_alive:
-		flower_growth()
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
-	if Input.is_action_pressed("click"):
-		pass
-
+	if Input.is_action_pressed("click") and flower_grown:
+		flower_resource()
+		flower_grown = false
+		item_data = null
+		plant_growth_animator.hide()
