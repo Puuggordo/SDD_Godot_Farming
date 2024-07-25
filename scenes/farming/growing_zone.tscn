@@ -1,7 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://bl0dlon6a7fhv"]
+[gd_scene load_steps=17 format=3 uid="uid://bl0dlon6a7fhv"]
 
 [ext_resource type="Script" path="res://Scripts/growing_zone.gd" id="1_h87yl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="2_1vfw4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_om802"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2xbk"]
 atlas = ExtResource("2_1vfw4")
@@ -113,6 +121,7 @@ mouse_filter = 1
 
 [node name="growing_zone" type="Node2D" parent="."]
 script = ExtResource("1_h87yl")
+none_frame = SubResource("SpriteFrames_om802")
 
 [node name="tilled_land" type="Sprite2D" parent="growing_zone"]
 position = Vector2(8, 8)

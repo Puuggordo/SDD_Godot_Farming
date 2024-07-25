@@ -16,6 +16,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("click"):
+		Global.mouse_in_use = true
 		selected = true
 
 
@@ -27,4 +28,5 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
+			Global.mouse_in_use = false
 			selected = false

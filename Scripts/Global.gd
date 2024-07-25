@@ -1,6 +1,6 @@
 extends Node
 
-var plant_selected
+var mouse_in_use = false
 var current_weather = "none"
 var current_day = 0
 var player_funds = 1000
