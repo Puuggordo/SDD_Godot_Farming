@@ -20,13 +20,14 @@ func _process(delta):
 		if item_data != null and flower_alive and !flower_grown:
 			flower_affinities_handler()
 		var max_frames = plant_growth_animator.get_sprite_frames().get_frame_count("default")-1
+		print("max frames: ",max_frames)
+		print("frame before: ",plant_growth_animator.frame)
 		if flower_alive and max_frames != 0:
+			plant_growth_animator.frame += 1
+			print("frame after: ",plant_growth_animator.frame)
 			if plant_growth_animator.frame == max_frames:
 				flower_grown = true
 				print("grown")
-			else:
-				plant_growth_animator.frame += 1
-
 
 func _on_area_2d_area_entered(area):
 	var item_object = area.get_parent()
@@ -37,29 +38,30 @@ func _on_area_2d_area_entered(area):
 			plant_growth_animator.set_sprite_frames(item_data.growth_frames)
 			plant_growth_animator.play("default")
 			flower_growing = true
+			flower_alive = true
 		elif item_data.type == "fertiliser":
 			pass
 
 
 func flower_affinities_handler():
 	var picker = randf()
-	if Global.current_weather != "none":
-		for strengths in item_data.strengths:
-			if Global.current_weather == strengths and picker<=0.25:
-				flower_alive = false
-				print("strength, unalive")
-				flower_exterminator()
-				break
-			else:
-				break
-		for weaknesses in item_data.weaknesses:
-			if Global.current_weather == weaknesses and picker<=0.75:
-				flower_alive = false
-				print("weakness, unalive")
-				flower_exterminator()
-				break
-			else:
-				break
+	print("current weather: ",Global.current_weather)
+	print(item_data)
+	if str(Global.current_weather) != "none" and item_data != null:
+		if item_data.strengths != [] or item_data.weaknesses != null:
+			for strengths in item_data.strengths:
+				if Global.current_weather == strengths and picker<=0.25:
+					flower_alive = false
+					print("strength, unalive")
+					flower_exterminator()
+					break
+		elif item_data.weaknesses != [] or item_data.weaknesses != null:
+			for weaknesses in item_data.weaknesses:
+				if Global.current_weather == weaknesses and picker<=0.75:
+					flower_alive = false
+					print("weakness, unalive")
+					flower_exterminator()
+					break
 		if picker <=0.5:
 			flower_alive = false
 			print("normal, unalive")

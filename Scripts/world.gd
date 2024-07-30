@@ -1,7 +1,7 @@
 extends Node2D
 
 var difficulty
-var weather_list = ["rain", "wind", "heat", "drought", "snow"]
+var weather_list = [0,1,2,3,4]
 var early_game = [0.3, 0.1, 0.1, 0.1, 0]
 var mid_game = [0.1, 0.2, 0.15, 0.15, 0.1]
 var end_game = [0, 0.1, 0.1, 0.2, 0.3]
