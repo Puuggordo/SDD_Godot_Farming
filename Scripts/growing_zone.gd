@@ -20,14 +20,14 @@ func _process(delta):
 		if item_data != null and flower_alive and !flower_grown:
 			flower_affinities_handler()
 		var max_frames = plant_growth_animator.get_sprite_frames().get_frame_count("default")-1
-		print("max frames: ",max_frames)
-		print("frame before: ",plant_growth_animator.frame)
+		#print("max frames: ",max_frames)
+		#print("frame before: ",plant_growth_animator.frame)
 		if flower_alive and max_frames != 0:
 			plant_growth_animator.frame += 1
-			print("frame after: ",plant_growth_animator.frame)
+			#print("frame after: ",plant_growth_animator.frame)
 			if plant_growth_animator.frame == max_frames:
 				flower_grown = true
-				print("grown")
+
 
 func _on_area_2d_area_entered(area):
 	var item_object = area.get_parent()
@@ -46,28 +46,25 @@ func _on_area_2d_area_entered(area):
 func flower_affinities_handler():
 	var picker = randf()
 	print("current weather: ",Global.current_weather)
-	print(item_data)
-	if str(Global.current_weather) != "none" and item_data != null:
+	if str(Global.current_weather) != "none":
 		if item_data.strengths != [] or item_data.weaknesses != null:
 			for strengths in item_data.strengths:
 				if Global.current_weather == strengths and picker<=0.25:
-					flower_alive = false
 					print("strength, unalive")
 					flower_exterminator()
 					break
 		elif item_data.weaknesses != [] or item_data.weaknesses != null:
 			for weaknesses in item_data.weaknesses:
 				if Global.current_weather == weaknesses and picker<=0.75:
-					flower_alive = false
 					print("weakness, unalive")
 					flower_exterminator()
 					break
-		if picker <=0.5:
-			flower_alive = false
-			print("normal, unalive")
-			flower_exterminator()
-		else:
-			flower_alive = true
+	elif picker <=0.5:
+		print("normal, unalive")
+		flower_exterminator()
+	else:
+		print("alive")
+		flower_alive = true
 
 
 func flower_resource():
@@ -84,9 +81,11 @@ func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 		flower_resource()
 		flower_exterminator()
 
+
 func flower_exterminator():
-	flower_grown = false
 	item_data = null
+	flower_grown = false
 	flower_growing = false
+	flower_alive = false
 	plant_growth_animator.set_sprite_frames(none_frame)
 	plant_growth_animator.play("default")

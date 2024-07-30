@@ -859,7 +859,7 @@ animations = [{
 atlas = ExtResource("1_7c0cg")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_6i0ew"]
+[sub_resource type="Resource" id="Resource_eyrly"]
 resource_local_to_scene = true
 script = ExtResource("12_sba0i")
 quantity = 1
@@ -870,16 +870,15 @@ max_stack = 8
 cost = 200
 inventory_quantity = 0
 shop_quantity = 0
-strengths = Array[int]([])
-weaknesses = Array[int]([])
+strengths = Array[String]([])
+weaknesses = Array[String]([])
 pollen_range_min = 0
 pollen_range_max = 0
-growth_stages = "res://scenes/farming/farmingTilesheetComplete.png"
 growth_frames = SubResource("SpriteFrames_5wiak")
 effect_pollen = 0
 effect_growth = 0
-effect_add_strengths = Array[int]([])
-effect_remove_weaknesses = Array[int]([])
+effect_add_strengths = Array[String]([])
+effect_remove_weaknesses = Array[String]([])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gduqr"]
 atlas = ExtResource("1_7c0cg")
@@ -965,7 +964,7 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_6i0ew")
+item_data = SubResource("Resource_eyrly")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(142, 182)
