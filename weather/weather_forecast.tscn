@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://baw5ncvwn45hw"]
+
+[ext_resource type="Script" path="res://WeatherForecast.gd" id="1_oi3c2"]
+
+[node name="WeatherForecast" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_oi3c2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Today" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Weather 1"
+
+[node name="Tomorrow" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Weather 2"
+
+[node name="AfterTomorrow" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Weather 3"
+
+[node name="AfterAfterTomorrow" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Weather 3"

@@ -46,25 +46,24 @@ func _on_area_2d_area_entered(area):
 func flower_affinities_handler():
 	var picker = randf()
 	print("current weather: ",Global.current_weather)
-	if str(Global.current_weather) != "none":
-		if item_data.strengths != [] or item_data.weaknesses != null:
-			for strengths in item_data.strengths:
-				if Global.current_weather == strengths and picker<=0.25:
-					print("strength, unalive")
-					flower_exterminator()
-					break
-		elif item_data.weaknesses != [] or item_data.weaknesses != null:
-			for weaknesses in item_data.weaknesses:
-				if Global.current_weather == weaknesses and picker<=0.75:
-					print("weakness, unalive")
-					flower_exterminator()
-					break
-	elif picker <=0.5:
+	for strengths in item_data.strengths:
+		if Global.current_weather == strengths and picker<=0.1:
+			print("strength, unalive")
+			flower_exterminator()
+			return
+	for weaknesses in item_data.weaknesses:
+		if Global.current_weather == weaknesses and picker<=0.5:
+			print("weakness, unalive")
+			flower_exterminator()
+			return
+	if picker <=0.2:
 		print("normal, unalive")
 		flower_exterminator()
+		return
 	else:
 		print("alive")
 		flower_alive = true
+		return
 
 
 func flower_resource():

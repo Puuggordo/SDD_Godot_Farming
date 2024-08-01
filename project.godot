@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 Global="*res://Scripts/Global.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 up={

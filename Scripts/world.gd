@@ -27,16 +27,16 @@ func weather_picker(weights: Array):
 		weights_sorted.append(sum)
 	for i in range(5):
 		if picker < weights_sorted[i]:
-			Global.current_weather = weather_list[i]
-			break
+			return weather_list[i]
 		elif picker >= weights_sorted[-1]:
-			Global.current_weather = "none"
-			break
+			return "none"
 
 
 func _ready():
 	$shop.hide()
-
+	for i in range(4):
+		Global.weather_forcast.append(weather_picker(difficulty_scaler(Global.current_day)))
+	Global.current_weather = Global.weather_forcast[0]
 
 func _on_shop_area_body_entered(body):
 	if body.name == "Player":
@@ -49,4 +49,6 @@ func _on_shop_area_body_exited(_body):
 
 func _on_nextday_button_pressed():
 	Global.current_day += 1
-	weather_picker(difficulty_scaler(Global.current_day))
+	Global.weather_forcast.remove_at(0)
+	Global.weather_forcast.append(weather_picker(difficulty_scaler(Global.current_day)))
+	Global.current_weather = Global.weather_forcast[0]

@@ -26,6 +26,8 @@ var cant_drop_data = false
 
 var shop_items = []
 
+var weather_forcast = []
+
 func array_checker(array: Array, value: String):
 	var inv = []
 	for r in range(array.size()):

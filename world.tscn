@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=38 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://inventory_ui.gd" id="14_d07n6"]
 [ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory.tscn" id="15_5ywqk"]
 [ext_resource type="PackedScene" uid="uid://cvsih7eyw8h0" path="res://Inventory/example_item.tscn" id="16_f7tpb"]
+[ext_resource type="PackedScene" uid="uid://baw5ncvwn45hw" path="res://weather/weather_forecast.tscn" id="16_n8gfj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yna"]
 texture = ExtResource("1_7c0cg")
@@ -859,7 +860,7 @@ animations = [{
 atlas = ExtResource("1_7c0cg")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_eyrly"]
+[sub_resource type="Resource" id="Resource_r77p1"]
 resource_local_to_scene = true
 script = ExtResource("12_sba0i")
 quantity = 1
@@ -964,7 +965,7 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_eyrly")
+item_data = SubResource("Resource_r77p1")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(142, 182)
@@ -1023,6 +1024,12 @@ vertical_alignment = 1
 offset_right = 134.0
 offset_bottom = 31.0
 text = "Next day button"
+
+[node name="WeatherForecast" parent="CanvasLayer" instance=ExtResource("16_n8gfj")]
+offset_left = 172.0
+offset_top = 7.0
+offset_right = 172.0
+offset_bottom = 7.0
 
 [node name="inventory_ui" type="CanvasLayer" parent="."]
 process_mode = 3
