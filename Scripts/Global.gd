@@ -20,7 +20,7 @@ var lettuce_buy = false
 
 var inventory = []
 signal inventoryUpdate
-@onready var slot_scene = preload("res://slot.tscn")
+@onready var slot_scene = preload("res://Inventory/slot.tscn")
 var current_drag_data = null
 var cant_drop_data = false
 

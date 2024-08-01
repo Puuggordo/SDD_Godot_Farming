@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://ca6qcynhj4psp"]
 
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_j7elg"]
-[ext_resource type="Script" path="res://Scripts/item.gd" id="1_ngkw0"]
+[ext_resource type="Script" path="res://Inventory/item.gd" id="1_ngkw0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpc0k"]
 atlas = ExtResource("1_j7elg")
@@ -54,13 +54,12 @@ max_stack = 8
 cost = 200
 inventory_quantity = 0
 shop_quantity = 0
-strengths = Array[int]([])
-weaknesses = Array[int]([])
+strengths = Array[String]([])
+weaknesses = Array[String]([])
 pollen_range_min = 10
 pollen_range_max = 6
-growth_stages = "res://scenes/farming/farmingTilesheetComplete.png"
 growth_frames = SubResource("SpriteFrames_5wiak")
 effect_pollen = 0
 effect_growth = 0
-effect_add_strengths = Array[int]([])
-effect_remove_weaknesses = Array[int]([])
+effect_add_strengths = Array[String]([])
+effect_remove_weaknesses = Array[String]([])

@@ -1,5 +1,6 @@
-extends HBoxContainer
+extends CanvasLayer
 
 
 func _process(_delta):
-	$Label.text = "= " + str(Global.player_funds)
+	%CoinLabel.text = "= " + str(Global.player_funds)
+	%PollenLabel.text = "= " + str(Global.player_pollen)

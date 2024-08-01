@@ -45,23 +45,18 @@ func _on_area_2d_area_entered(area):
 
 func flower_affinities_handler():
 	var picker = randf()
-	print("current weather: ",Global.current_weather)
 	for strengths in item_data.strengths:
 		if Global.current_weather == strengths and picker<=0.1:
-			print("strength, unalive")
 			flower_exterminator()
 			return
 	for weaknesses in item_data.weaknesses:
 		if Global.current_weather == weaknesses and picker<=0.5:
-			print("weakness, unalive")
 			flower_exterminator()
 			return
 	if picker <=0.2:
-		print("normal, unalive")
 		flower_exterminator()
 		return
 	else:
-		print("alive")
 		flower_alive = true
 		return
 
@@ -72,7 +67,6 @@ func flower_resource():
 		var max_pollen = item_data.pollen_range_max
 		var pollen_output = randi_range(min_pollen, max_pollen)
 		Global.player_pollen += pollen_output
-		print(Global.player_pollen)
 
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):

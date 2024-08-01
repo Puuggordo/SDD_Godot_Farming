@@ -1,22 +1,17 @@
-[gd_scene load_steps=38 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=35 format=3 uid="uid://x0awtcbiwvjl"]
 
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_3tpjl"]
+[ext_resource type="Script" path="res://world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
 [ext_resource type="PackedScene" uid="uid://c8m1b206mrphc" path="res://player.tscn" id="2_yyt5b"]
-[ext_resource type="PackedScene" uid="uid://beyjiaurnmv4g" path="res://scenes/farming/carrot_seedpack.tscn" id="3_npg2j"]
-[ext_resource type="PackedScene" uid="uid://b62b780yrdqng" path="res://scenes/farming/onion_seedpack.tscn" id="4_8yu1j"]
 [ext_resource type="PackedScene" uid="uid://bguvpkh55i8uf" path="res://scenes/farming/soil_container.tscn" id="5_f4mds"]
-[ext_resource type="PackedScene" uid="uid://mkkrne3110fn" path="res://scenes/farming/crop_amount.tscn" id="6_sgyun"]
 [ext_resource type="Texture2D" uid="uid://c734sukpj8r2t" path="res://scenes/farming/food_stall.png" id="7_8rf2i"]
 [ext_resource type="Script" path="res://Scripts/front.gd" id="7_58b76"]
-[ext_resource type="PackedScene" uid="uid://dn3dnhlfv1fci" path="res://scenes/farming/sellzone.tscn" id="9_21fak"]
 [ext_resource type="Script" path="res://Scripts/coin_amount.gd" id="9_o8pld"]
-[ext_resource type="PackedScene" uid="uid://hpxhs5ijn0f3" path="res://scenes/farming/strawberry_seedpack.tscn" id="11_oyphr"]
-[ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://Inventory/shop.tscn" id="12_i8hnp"]
-[ext_resource type="Script" path="res://Scripts/item.gd" id="12_sba0i"]
+[ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://Shop/shop.tscn" id="12_i8hnp"]
+[ext_resource type="Script" path="res://Inventory/item.gd" id="12_sba0i"]
 [ext_resource type="Resource" uid="uid://dyo1icmytxftu" path="res://flowers/rose_seed.tres" id="13_tkxlp"]
-[ext_resource type="Script" path="res://inventory_ui.gd" id="14_d07n6"]
-[ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory.tscn" id="15_5ywqk"]
+[ext_resource type="Script" path="res://Inventory/inventory_ui.gd" id="14_d07n6"]
+[ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://Inventory/inventory.tscn" id="15_5ywqk"]
 [ext_resource type="PackedScene" uid="uid://cvsih7eyw8h0" path="res://Inventory/example_item.tscn" id="16_f7tpb"]
 [ext_resource type="PackedScene" uid="uid://baw5ncvwn45hw" path="res://weather/weather_forecast.tscn" id="16_n8gfj"]
 
@@ -860,7 +855,7 @@ animations = [{
 atlas = ExtResource("1_7c0cg")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_r77p1"]
+[sub_resource type="Resource" id="Resource_b1d3w"]
 resource_local_to_scene = true
 script = ExtResource("12_sba0i")
 quantity = 1
@@ -873,8 +868,8 @@ inventory_quantity = 0
 shop_quantity = 0
 strengths = Array[String]([])
 weaknesses = Array[String]([])
-pollen_range_min = 0
-pollen_range_max = 0
+pollen_range_min = 10
+pollen_range_max = 6
 growth_frames = SubResource("SpriteFrames_5wiak")
 effect_pollen = 0
 effect_growth = 0
@@ -890,6 +885,21 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gduqr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cj4r"]
+atlas = ExtResource("1_7c0cg")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6vth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cj4r")
 }],
 "loop": true,
 "name": &"default",
@@ -945,18 +955,6 @@ shape = SubResource("RectangleShape2D_euv22")
 position = Vector2(336, 124)
 shape = SubResource("RectangleShape2D_c4taq")
 
-[node name="sellzone" parent="." instance=ExtResource("9_21fak")]
-position = Vector2(297, 187)
-
-[node name="carrot_seedpack" parent="." instance=ExtResource("3_npg2j")]
-position = Vector2(255, 174)
-
-[node name="onion_seedpack" parent="." instance=ExtResource("4_8yu1j")]
-position = Vector2(275, 221)
-
-[node name="strawberry_seedpack" parent="." instance=ExtResource("11_oyphr")]
-position = Vector2(223, 196)
-
 [node name="shop_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shop_area"]
@@ -965,7 +963,7 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_r77p1")
+item_data = SubResource("Resource_b1d3w")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(142, 182)
@@ -973,21 +971,7 @@ item_data = ExtResource("13_tkxlp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
-
-[node name="crop_amount" parent="CanvasLayer" instance=ExtResource("6_sgyun")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -147.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 8
-size_flags_vertical = 8
+script = ExtResource("9_o8pld")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 960.0
@@ -1001,7 +985,6 @@ theme_override_constants/margin_right = 3
 
 [node name="coin_amount" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
 layout_mode = 2
-script = ExtResource("9_o8pld")
 
 [node name="Control" type="Control" parent="CanvasLayer/PanelContainer/MarginContainer/coin_amount"]
 custom_minimum_size = Vector2(40, 40)
@@ -1013,7 +996,8 @@ position = Vector2(20, 20)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_gt0ho")
 
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/coin_amount"]
+[node name="CoinLabel" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/coin_amount"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -1030,6 +1014,36 @@ offset_left = 172.0
 offset_top = 7.0
 offset_right = 172.0
 offset_bottom = 7.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 958.0
+offset_top = 66.0
+offset_right = 1003.0
+offset_bottom = 106.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PanelContainer2"]
+layout_mode = 2
+
+[node name="pollen_amount" type="HBoxContainer" parent="CanvasLayer/PanelContainer2/MarginContainer2"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/PanelContainer2/MarginContainer2/pollen_amount"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/PanelContainer2/MarginContainer2/pollen_amount/Control"]
+position = Vector2(22, 20)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_r6vth")
+
+[node name="PollenLabel" type="Label" parent="CanvasLayer/PanelContainer2/MarginContainer2/pollen_amount"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
 
 [node name="inventory_ui" type="CanvasLayer" parent="."]
 process_mode = 3
