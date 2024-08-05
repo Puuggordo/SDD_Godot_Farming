@@ -46,14 +46,12 @@ region = Rect2(80, 80, 16, 16)
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_ngkw0")
-quantity = 1
+quantity = 0
 item_name = "Snowdrop"
 type = "flower"
 item_texture = SubResource("AtlasTexture_8e3nq")
 max_stack = 8
-cost = 200
-inventory_quantity = 0
-shop_quantity = 0
+cost = 50
 strengths = Array[String]([])
 weaknesses = Array[String]([])
 pollen_range_min = 10

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://baw5ncvwn45hw"]
 
-[ext_resource type="Script" path="res://weather/WeatherForecast.gd" id="1_oi3c2"]
+[ext_resource type="Script" path="res://weather/weather_forecast.gd" id="1_oi3c2"]
 
 [node name="WeatherForecast" type="Control"]
 layout_mode = 3

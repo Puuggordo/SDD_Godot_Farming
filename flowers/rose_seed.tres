@@ -35,14 +35,12 @@ animations = [{
 
 [resource]
 script = ExtResource("1_4dh3x")
-quantity = 1
+quantity = 0
 item_name = "Rose"
 type = "flower"
 item_texture = ExtResource("1_j2par")
 max_stack = 5
-cost = 500
-inventory_quantity = 0
-shop_quantity = 0
+cost = 30
 strengths = Array[String](["rain"])
 weaknesses = Array[String]([])
 pollen_range_min = 5

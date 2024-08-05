@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv0fuljgxr0k4"]
+
+[ext_resource type="Script" path="res://Scripts/beehive.gd" id="1_8vq4q"]
+[ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="2_x1pcv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2xhd"]
+atlas = ExtResource("2_x1pcv")
+region = Rect2(128, 176, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phhxi"]
+radius = 16.0
+
+[node name="Beehive" type="Node2D"]
+script = ExtResource("1_8vq4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_o2xhd")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_phhxi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

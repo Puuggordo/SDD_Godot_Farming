@@ -39,10 +39,10 @@ func _ready():
 	inventory.resize(15)
 	shop_items.resize(3)
 
-func add_item_to_shop(item):
+func add_item_to_shop(item:Item):
 	for i in range(shop_items.size()):
-		var slot = shop_items[i]
-		if slot != null and slot["name"] == item["name"]:
+		var slot:Item = shop_items[i]
+		if slot != null and slot.item_name == item.item_name:
 			shop_items.remove_at(i)
 			shop_items.insert(i,item)
 			return
