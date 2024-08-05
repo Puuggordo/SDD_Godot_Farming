@@ -1,9 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://vcdoku1x7cjg"]
+[gd_scene load_steps=13 format=3 uid="uid://vcdoku1x7cjg"]
 
 [ext_resource type="Script" path="res://Shop/shop.gd" id="1_222po"]
 [ext_resource type="PackedScene" uid="uid://cqt3el0jmrax" path="res://Shop/shop_item.tscn" id="2_ofy8i"]
 [ext_resource type="Resource" uid="uid://dyo1icmytxftu" path="res://flowers/rose_seed.tres" id="3_de1md"]
-[ext_resource type="Resource" uid="uid://ca6qcynhj4psp" path="res://flowers/snowdrop_seed.tres" id="4_f5q0p"]
+[ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="4_58e6m"]
+[ext_resource type="Script" path="res://Inventory/item.gd" id="5_s4ko7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpc0k"]
+atlas = ExtResource("4_58e6m")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3lm5"]
+atlas = ExtResource("4_58e6m")
+region = Rect2(112, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytty7"]
+atlas = ExtResource("4_58e6m")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3hrs"]
+atlas = ExtResource("4_58e6m")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5wiak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpc0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3lm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytty7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3hrs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e3nq"]
+atlas = ExtResource("4_58e6m")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="Resource" id="Resource_r3ski"]
+resource_local_to_scene = true
+script = ExtResource("5_s4ko7")
+quantity = 0
+item_name = "Snowdrop"
+type = "flower"
+item_texture = SubResource("AtlasTexture_8e3nq")
+max_stack = 8
+cost = 50
+strengths = Array[String]([])
+weaknesses = Array[String]([])
+pollen_range_min = 10
+pollen_range_max = 6
+growth_frames = SubResource("SpriteFrames_5wiak")
+effect_pollen = 0.0
+effect_growth = 0.0
+effect_add_strengths = Array[String]([])
+effect_remove_weaknesses = Array[String]([])
 
 [node name="shop" type="CanvasLayer"]
 script = ExtResource("1_222po")
@@ -23,7 +83,7 @@ item = ExtResource("3_de1md")
 
 [node name="Item2" parent="ScrollContainer/ItemContainer" instance=ExtResource("2_ofy8i")]
 layout_mode = 2
-item = ExtResource("4_f5q0p")
+item = SubResource("Resource_r3ski")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 84.0

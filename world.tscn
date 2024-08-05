@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=37 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c734sukpj8r2t" path="res://scenes/farming/food_stall.png" id="7_8rf2i"]
 [ext_resource type="Script" path="res://Scripts/front.gd" id="7_58b76"]
 [ext_resource type="Script" path="res://Scripts/coin_amount.gd" id="9_o8pld"]
+[ext_resource type="Resource" uid="uid://ey0osiv5t767" path="res://fertiliser/growth_fertilser.tres" id="10_hhwco"]
 [ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://Shop/shop.tscn" id="12_i8hnp"]
 [ext_resource type="Script" path="res://Inventory/item.gd" id="12_sba0i"]
 [ext_resource type="Resource" uid="uid://dyo1icmytxftu" path="res://flowers/rose_seed.tres" id="13_tkxlp"]
@@ -856,7 +857,7 @@ animations = [{
 atlas = ExtResource("1_7c0cg")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_7w36x"]
+[sub_resource type="Resource" id="Resource_1w2th"]
 resource_local_to_scene = true
 script = ExtResource("12_sba0i")
 quantity = 1
@@ -870,8 +871,8 @@ weaknesses = Array[String]([])
 pollen_range_min = 10
 pollen_range_max = 6
 growth_frames = SubResource("SpriteFrames_5wiak")
-effect_pollen = 0
-effect_growth = 0
+effect_pollen = 0.0
+effect_growth = 0.0
 effect_add_strengths = Array[String]([])
 effect_remove_weaknesses = Array[String]([])
 
@@ -962,11 +963,15 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_7w36x")
+item_data = SubResource("Resource_1w2th")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
-position = Vector2(142, 182)
+position = Vector2(139, 193)
 item_data = ExtResource("13_tkxlp")
+
+[node name="ExampleItem3" parent="." instance=ExtResource("16_f7tpb")]
+position = Vector2(204, 203)
+item_data = ExtResource("10_hhwco")
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3

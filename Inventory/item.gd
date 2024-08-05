@@ -19,7 +19,7 @@ var weather_types = ["rain", "wind", "heat", "drought", "snow"]
 @export var growth_frames: SpriteFrames
 
 @export_subgroup("Fertiliser")
-@export var effect_pollen: int
-@export var effect_growth: int
+@export var effect_pollen: float
+@export var effect_growth: float
 @export var effect_add_strengths: Array[String]
 @export var effect_remove_weaknesses: Array[String]
