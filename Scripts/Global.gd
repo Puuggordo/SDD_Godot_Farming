@@ -5,6 +5,9 @@ var current_weather = "none"
 var current_day = 0
 var player_funds = 1000
 var player_pollen =0
+var quota = 0
+var days_until_quota = 0
+
 
 var carrot_number = 0
 var onion_number = 0

@@ -11,7 +11,7 @@ var growth_multiplier = 1
 var pollen_multiplier = 1
 @export var none_frame: SpriteFrames
 @onready var plant_growth_animator = $plant_growing
-
+@onready var particle = $fertiliser_sprite
 
 func _ready():
 	plant_growth_animator.play("none")
@@ -37,7 +37,6 @@ func _on_area_2d_area_entered(area):
 	if "item_data" in item_object:
 		var item_data = item_object.item_data
 		#print(plant_growth_animator.get_sprite_frames().get_animation_names())
-		print(item_data.type)
 		if item_data.type == "flower"  and !flower_growing and !flower_grown:
 			flower = item_data
 			plant_growth_animator.set_sprite_frames(item_data.growth_frames)
@@ -86,6 +85,9 @@ func apply_fertiliser_effect():
 		pollen_multiplier = fertiliser.effect_pollen
 	else: 
 		pollen_multiplier = 1
+	particle.show()
+	await get_tree().create_timer(.5).timeout
+	particle.hide()
 	#fertiliser.effect_remove_weaknesses
 	#fertiliser.effect_add_strengths
 

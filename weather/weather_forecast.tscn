@@ -8,6 +8,7 @@ anchors_preset = 0
 script = ExtResource("1_oi3c2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -30,3 +31,10 @@ text = "Weather 3"
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Weather 3"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="Quota" type="Label" parent="HBoxContainer"]
+layout_mode = 2

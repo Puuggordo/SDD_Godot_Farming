@@ -857,7 +857,7 @@ animations = [{
 atlas = ExtResource("1_7c0cg")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_1w2th"]
+[sub_resource type="Resource" id="Resource_7yqig"]
 resource_local_to_scene = true
 script = ExtResource("12_sba0i")
 quantity = 1
@@ -963,7 +963,7 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_1w2th")
+item_data = SubResource("Resource_7yqig")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(139, 193)
