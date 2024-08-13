@@ -15,26 +15,35 @@ offset_bottom = 40.0
 [node name="Today" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Weather 1"
+text = "drought, "
 
 [node name="Tomorrow" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Weather 2"
+text = "drought, "
 
 [node name="AfterTomorrow" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Weather 3"
+text = "drought, "
 
 [node name="AfterAfterTomorrow" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Weather 3"
+text = "drought"
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 6.0
+offset_right = 721.0
+offset_bottom = 46.0
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 17
 
-[node name="Quota" type="Label" parent="HBoxContainer"]
+[node name="Quota" type="Label" parent="HBoxContainer2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Quota"
