@@ -2,10 +2,15 @@ extends Panel
 
 var item = null
 var stack_count = 0
-
+var inventory_slot = true
 @onready var icon = $CenterContainer/item
 @onready var count_label = $ItemQuantity
 @onready var BG_sprite = $background
+@onready var select_panel = $Panel
+
+
+func _ready():
+	select_panel.hide()
 
 
 func set_item(new_item: Item,quantity):
@@ -25,24 +30,20 @@ func set_empty():
 
 func _get_drag_data(at_position):
 	# Get index of selected item
-	var selected_item_index = get_index()
+	var selected_slot_index = get_index()
 	# Get selected item
-	var selected_item = Global.inventory[selected_item_index]
-	# If the selected item is an item (not null)
-	if selected_item is Item:
+	var selected_slot = Global.inventory[selected_slot_index]
+	# If the selected item is an item (not null) and a inventory slot
+	if selected_slot is Item and inventory_slot:
 		# Remove at the selected item index and replace with null
-		# This is to 
-		Global.inventory.remove_at(selected_item_index)
-		Global.inventory.insert(selected_item_index, null)
+		Global.inventory.remove_at(selected_slot_index)
+		Global.inventory.insert(selected_slot_index, null)
 		# Put selected item and its index into a dictonary called data
 		var data = {} 
-		data.selected_item = selected_item
-		data.selected_item_index = selected_item_index
+		data.selected_slot = selected_slot
+		data.selected_slot_index = selected_slot_index
 		# Set the current item being dragged = data (There is an item being dragged)
 		Global.current_drag_data = data
-		#var drag_preview = drag_preview_scene.instantiate()
-		#get_parent().add_child(drag_preview)
-		#drag_preview.texture = selected_item.item_texture
 		# Send a singal to update the inventory
 		Global.inventoryUpdate.emit()
 		# Give the data to the _can_drop_data function
@@ -50,20 +51,21 @@ func _get_drag_data(at_position):
 
 # Checks if the the data can be dropped at the current mouse position (If the node under the mouse position is a slot)
 func _can_drop_data(at_position, data):
-	# If true, then give the data to the _drop_data function
-	return data
+	# If the slot is a inventory slot, then give the data to the _drop_data function
+	if inventory_slot:
+		return data
 
 
 func _drop_data(at_position, data):
 	# Get index of where the selected item is going to be dropped
-	var new_item_index = get_index()
+	var dropped_slot_index = get_index()
 	# TODO: rename new item index to "item of where the selected item is going to be dropped"
 	# Get the item of where the selected item is going to be dropped
-	var new_item = Global.inventory[new_item_index]
-	Global.inventory.remove_at(data.selected_item_index)
-	Global.inventory.insert(data.selected_item_index,new_item)
-	Global.inventory.remove_at(new_item_index)
-	Global.inventory.insert(new_item_index,data.selected_item)
+	var dropped_slot = Global.inventory[dropped_slot_index]
+	Global.inventory.remove_at(data.selected_slot_index)
+	Global.inventory.insert(data.selected_slot_index,dropped_slot)
+	Global.inventory.remove_at(dropped_slot_index)
+	Global.inventory.insert(dropped_slot_index,data.selected_slot)
 	# Set the current item being dragged = null (There is no item being dragged)
 	Global.current_drag_data = null
 	# Send a singal to update the inventory
@@ -75,9 +77,9 @@ func _notification(what: int) -> void:
 		# If the dragged slot not = null
 		if Global.current_drag_data != null:
 			# Remove the slot at the begining slot (remove null)
-			Global.inventory.remove_at(Global.current_drag_data.selected_item_index)
+			Global.inventory.remove_at(Global.current_drag_data.selected_slot_index)
 			# Insert the dragged slot back to its previous position
-			Global.inventory.insert(Global.current_drag_data.selected_item_index, Global.current_drag_data.selected_item)
+			Global.inventory.insert(Global.current_drag_data.selected_slot_index, Global.current_drag_data.selected_slot)
 			# Send a singal to update the inventory
 			Global.inventoryUpdate.emit()
 

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr5kago3mpv6w"]
+
+[ext_resource type="Script" path="res://Inventory/hotbar.gd" id="1_b6gkt"]
+[ext_resource type="Texture2D" uid="uid://8pn4roac3kh6" path="res://Sprites/InventoryRect.png" id="1_klj5c"]
+[ext_resource type="PackedScene" uid="uid://dnrogghhhyjiy" path="res://Inventory/slot.tscn" id="3_sbogc"]
+
+[node name="Hotbar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_b6gkt")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+offset_right = 130.0
+offset_bottom = 34.0
+texture = ExtResource("1_klj5c")
+region_rect = Rect2(0, 0, 19, 19)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 123.0
+offset_bottom = 27.0
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Slot" parent="NinePatchRect/HBoxContainer" instance=ExtResource("3_sbogc")]
+layout_mode = 2
+
+[node name="Slot2" parent="NinePatchRect/HBoxContainer" instance=ExtResource("3_sbogc")]
+layout_mode = 2
+
+[node name="Slot3" parent="NinePatchRect/HBoxContainer" instance=ExtResource("3_sbogc")]
+layout_mode = 2
+
+[node name="Slot4" parent="NinePatchRect/HBoxContainer" instance=ExtResource("3_sbogc")]
+layout_mode = 2
+
+[node name="Slot5" parent="NinePatchRect/HBoxContainer" instance=ExtResource("3_sbogc")]
+layout_mode = 2

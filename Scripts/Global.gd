@@ -26,7 +26,7 @@ signal inventoryUpdate
 @onready var slot_scene = preload("res://Inventory/slot.tscn")
 var current_drag_data = null
 var cant_drop_data = false
-
+var hotbar_selected_item
 var shop_items = []
 
 var weather_forcast = []
@@ -108,6 +108,31 @@ func remove_item_from_inventory(item: Item):
 			return
 	return
 
+
+func clear_grid(container):
+	# While there are slots in the container
+	while container.get_child_count() > 0:
+		var child = container.get_child(0)
+		# Delete the slot from existance >:(
+		container.remove_child(child)
+		child.queue_free()
+
+
+func make_items_unique():
+	# Goal is to make sure the item resources in each slot are unique, as data from same resources are shared
+	var unique_items = []
+	#loops through the inventory
+	for item in inventory:
+		#if there is an item
+		if item != null:
+			# Duplicate the item (making it unique) and add the unique item to the inventory with unique items
+			unique_items.append(item.duplicate())
+		# If there is no item
+		else:
+			# Add an empty slot into the inventory with unique items
+			unique_items.append(null)
+	# Set the inventory into inventory with unique items
+	inventory = unique_items
 
 func apply_effect(effect):
 	pass
