@@ -46,7 +46,7 @@ animations = [{
 atlas = ExtResource("4_58e6m")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_1ofv8"]
+[sub_resource type="Resource" id="Resource_f005w"]
 resource_local_to_scene = true
 script = ExtResource("5_s4ko7")
 quantity = 0
@@ -83,7 +83,7 @@ item = ExtResource("3_de1md")
 
 [node name="Item2" parent="ScrollContainer/ItemContainer" instance=ExtResource("2_ofy8i")]
 layout_mode = 2
-item = SubResource("Resource_1ofv8")
+item = SubResource("Resource_f005w")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 84.0
