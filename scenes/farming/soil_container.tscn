@@ -10,6 +10,7 @@ offset_bottom = 132.0
 columns = 9
 
 [node name="soil" parent="." instance=ExtResource("1_vfllu")]
+visible = false
 layout_mode = 2
 
 [node name="soil2" parent="." instance=ExtResource("1_vfllu")]
@@ -142,4 +143,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="soil45" parent="." instance=ExtResource("1_vfllu")]
+layout_mode = 2
+
+[node name="soil46" parent="." instance=ExtResource("1_vfllu")]
 layout_mode = 2

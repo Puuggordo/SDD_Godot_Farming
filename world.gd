@@ -5,6 +5,7 @@ var weather_list = ["rain", "wind", "heat", "drought", "snow"]
 var early_game = [0.3, 0.1, 0.1, 0.1, 0]
 var mid_game = [0.1, 0.2, 0.15, 0.15, 0.1]
 var end_game = [0, 0.1, 0.1, 0.2, 0.3]
+var paused = false
 
 func difficulty_scaler(day):
 	if day <= 7:
@@ -45,6 +46,13 @@ func _on_shop_area_body_entered(body):
 
 func _on_shop_area_body_exited(_body):
 	$shop.hide()
+
+
+func _input(event):
+	if event.is_action_pressed("toggle_inventory"):
+		$inventory_ui.visible = !$inventory_ui.visible
+		$UI/Hotbar.visible = !$UI/Hotbar.visible
+		get_tree().paused = true
 
 
 func _on_nextday_button_pressed():

@@ -12,11 +12,11 @@
 [ext_resource type="Script" path="res://Inventory/item.gd" id="12_sba0i"]
 [ext_resource type="PackedScene" uid="uid://cr5kago3mpv6w" path="res://Inventory/hotbar.tscn" id="13_mib65"]
 [ext_resource type="Resource" uid="uid://dyo1icmytxftu" path="res://flowers/rose_seed.tres" id="13_tkxlp"]
-[ext_resource type="Script" path="res://Inventory/inventory_ui.gd" id="14_d07n6"]
 [ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://Inventory/inventory.tscn" id="15_5ywqk"]
 [ext_resource type="PackedScene" uid="uid://bv0fuljgxr0k4" path="res://beehive.tscn" id="15_joaky"]
 [ext_resource type="PackedScene" uid="uid://cvsih7eyw8h0" path="res://Inventory/example_item.tscn" id="16_f7tpb"]
 [ext_resource type="PackedScene" uid="uid://baw5ncvwn45hw" path="res://weather/weather_forecast.tscn" id="16_n8gfj"]
+[ext_resource type="Script" path="res://pause_node.gd" id="17_i5ojm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yna"]
 texture = ExtResource("1_7c0cg")
@@ -858,19 +858,19 @@ animations = [{
 atlas = ExtResource("1_7c0cg")
 region = Rect2(80, 80, 16, 16)
 
-[sub_resource type="Resource" id="Resource_fo3h1"]
+[sub_resource type="Resource" id="Resource_vgt7b"]
 resource_local_to_scene = true
 script = ExtResource("12_sba0i")
-quantity = 1
+quantity = 0
 item_name = "Snowdrop"
 type = "flower"
 item_texture = SubResource("AtlasTexture_8e3nq")
 max_stack = 8
-cost = 200
+cost = 50
 strengths = Array[String]([])
 weaknesses = Array[String]([])
-pollen_range_min = 10
-pollen_range_max = 6
+pollen_range_min = 6
+pollen_range_max = 10
 growth_frames = SubResource("SpriteFrames_5wiak")
 effect_pollen = 0.0
 effect_growth = 0.0
@@ -925,8 +925,8 @@ layer_0/tile_data = PackedInt32Array(917507, 524289, 6, 1114115, 458753, 7, 1179
 [node name="GridContainer" parent="." instance=ExtResource("5_f4mds")]
 offset_left = 80.0
 offset_top = 46.0
-offset_right = 231.0
-offset_bottom = 133.0
+offset_right = 220.0
+offset_bottom = 127.0
 
 [node name="Player" parent="." instance=ExtResource("2_yyt5b")]
 z_index = 1
@@ -964,7 +964,7 @@ shape = SubResource("CircleShape2D_rdwqk")
 
 [node name="ExampleItem" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(93, 175)
-item_data = SubResource("Resource_fo3h1")
+item_data = SubResource("Resource_vgt7b")
 
 [node name="ExampleItem2" parent="." instance=ExtResource("16_f7tpb")]
 position = Vector2(139, 193)
@@ -1062,7 +1062,6 @@ process_mode = 3
 visible = false
 scale = Vector2(3.5, 3.5)
 transform = Transform2D(3.5, 0, 0, 3.5, 0, 0)
-script = ExtResource("14_d07n6")
 
 [node name="Inventory" parent="inventory_ui" instance=ExtResource("15_5ywqk")]
 offset_left = 96.0961
@@ -1075,6 +1074,10 @@ visible = false
 
 [node name="Beehive" parent="." instance=ExtResource("15_joaky")]
 position = Vector2(324, 254)
+
+[node name="Pause_node" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("17_i5ojm")
 
 [connection signal="body_entered" from="front/belowstall" to="front" method="_on_belowstall_body_entered"]
 [connection signal="body_entered" from="front/abovestall" to="front" method="_on_abovestall_body_entered"]

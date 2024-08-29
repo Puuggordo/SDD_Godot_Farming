@@ -13,40 +13,60 @@ var pollen_multiplier = 1
 @onready var plant_growth_animator = $plant_growing
 @onready var particle = $fertiliser_sprite
 
+var node_size = Vector2(16,16)
+var mouse_button_held = false
+
+
 func _ready():
 	plant_growth_animator.play("none")
-
+	#var rect_visual = ColorRect.new()
+	#rect_visual.color = Color(1, 0, 0, 0.5)  # Red color with 50% opacity
+	#rect_visual.position = Vector2(0, 0)  # Set to (0, 0) to align with the soil node's top-left corner	rect_visual.size = node_size  # Set the size to match the Rect2
+	#rect_visual.size = node_size  # Set the size to match the Rect2
+	#add_child(rect_visual) # Add the ColorRect as a child of the current node
 
 func _process(delta):
 	if Global.current_day == previous_day + 1:
 		previous_day = Global.current_day
 		if item_data != null and flower_alive and !flower_grown:
 			flower_affinities_handler()
-		var max_frames = plant_growth_animator.get_sprite_frames().get_frame_count("default")-1
+		var max_frames = plant_growth_animator.get_sprite_frames().get_frame_count("default") - 1
 		#print("max frames: ",max_frames)
 		#print("frame before: ",plant_growth_animator.frame)
 		if flower_alive and max_frames != 0:
-			plant_growth_animator.frame += 1*(growth_multiplier)
+			plant_growth_animator.frame += 1 * (growth_multiplier)
 			#print("frame after: ",plant_growth_animator.frame)
 			if plant_growth_animator.frame == max_frames:
 				flower_grown = true
 
+	if mouse_button_held and Global.hotbar_selected_item != null:
+		# Get the mouse position in global coordinates
+		var mouse_pos = get_global_mouse_position()
+		# Check if the mouse is over this specific soil plot
+		if is_mouse_over_soil(mouse_pos):
+			var item_data = Global.hotbar_selected_item
+			if item_data.type == "flower" and !flower_growing and !flower_grown:
+				Global.remove_item_from_inventory(item_data)
+				flower = item_data
+				plant_growth_animator.set_sprite_frames(item_data.growth_frames)
+				plant_growth_animator.play("default")
+				flower_growing = true
+				flower_alive = true
+			elif item_data.type == "fertiliser":
+				Global.remove_item_from_inventory(item_data)
+				fertiliser = item_data
+				if flower != null:
+					apply_fertiliser_effect()
 
-func _on_area_2d_area_entered(area):
-	var item_object = area.get_parent()
-	if "item_data" in item_object:
-		var item_data = item_object.item_data
-		#print(plant_growth_animator.get_sprite_frames().get_animation_names())
-		if item_data.type == "flower"  and !flower_growing and !flower_grown:
-			flower = item_data
-			plant_growth_animator.set_sprite_frames(item_data.growth_frames)
-			plant_growth_animator.play("default")
-			flower_growing = true
-			flower_alive = true
-		elif item_data.type == "fertiliser":
-			fertiliser = item_data
-			if flower != null:
-				apply_fertiliser_effect()
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		mouse_button_held = event.pressed
+
+
+func is_mouse_over_soil(mouse_pos: Vector2) -> bool:
+	var soil_rect = Rect2(global_position, node_size)
+	return soil_rect.has_point(mouse_pos)
 
 
 func flower_affinities_handler():
@@ -93,7 +113,7 @@ func apply_fertiliser_effect():
 
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
-	if Input.is_action_pressed("click") and flower_grown and !Global.mouse_in_use:
+	if Input.is_action_pressed("click") and flower_grown:
 		flower_resource()
 		flower_exterminator()
 

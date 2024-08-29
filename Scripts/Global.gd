@@ -42,6 +42,15 @@ func _ready():
 	inventory.resize(15)
 	shop_items.resize(3)
 
+func _process(delta):
+	for i in range(inventory.size()):
+		var slot = inventory[i]
+		if slot!= null and slot.quantity <= 0:
+			inventory.remove_at(i)
+			inventory.insert(i,null)
+			inventoryUpdate.emit()
+
+
 func add_item_to_shop(item:Item):
 	for i in range(shop_items.size()):
 		var slot:Item = shop_items[i]
@@ -101,8 +110,7 @@ func remove_item_from_inventory(item: Item):
 		# If the items match
 		if slot != null and slot.item_name == item.item_name:
 			slot.quantity -= 1
-			if slot.quantity <= 0:
-				slot = null
+			print("minus")
 			# Send a singal to update the inventory
 			inventoryUpdate.emit()
 			return
