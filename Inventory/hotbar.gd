@@ -42,8 +42,9 @@ func slot_selection_panel():
 		else:
 			slot.select_panel.hide()
 
-func _input(event):
-	if event.is_action_pressed("scroll_up"):
-		selected_slot += 1
-	if event.is_action_pressed("scroll_down"):
-		selected_slot -= 1
+func _unhandled_input(event):
+	if Global.hotbar_can_scroll:
+		if event.is_action_pressed("scroll_up"):
+			selected_slot += 1
+		if event.is_action_pressed("scroll_down"):
+			selected_slot -= 1

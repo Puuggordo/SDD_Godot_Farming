@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://d01sh7qao4vpt"]
+
+[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://scenes/New Piskel.png" id="1_7msj5"]
+[ext_resource type="Script" path="res://Inventory/item.gd" id="1_yvhx1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a42t1"]
+atlas = ExtResource("1_7msj5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0yln"]
+atlas = ExtResource("1_7msj5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxxyc"]
+atlas = ExtResource("1_7msj5")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmj2o"]
+atlas = ExtResource("1_7msj5")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gs71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a42t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0yln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxxyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmj2o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iudsd"]
+atlas = ExtResource("1_7msj5")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_yvhx1")
+quantity = 0
+item_name = "Sunflower"
+type = "flower"
+item_texture = SubResource("AtlasTexture_iudsd")
+max_stack = 0
+cost = 0
+strengths = Array[String]([])
+weaknesses = Array[String]([])
+pollen_range_min = 0
+pollen_range_max = 0
+growth_frames = SubResource("SpriteFrames_8gs71")
+effect_pollen = 0.0
+effect_growth = 0.0
+effect_add_strengths = Array[String]([])
+effect_remove_weaknesses = Array[String]([])

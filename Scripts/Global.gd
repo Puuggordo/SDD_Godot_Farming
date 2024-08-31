@@ -26,7 +26,10 @@ signal inventoryUpdate
 @onready var slot_scene = preload("res://Inventory/slot.tscn")
 var current_drag_data = null
 var cant_drop_data = false
+
 var hotbar_selected_item
+var hotbar_can_scroll = true
+
 var shop_items = []
 
 var weather_forcast = []
@@ -40,7 +43,7 @@ func array_checker(array: Array, value: String):
 
 func _ready():
 	inventory.resize(15)
-	shop_items.resize(3)
+	shop_items.resize(5)
 
 func _process(delta):
 	for i in range(inventory.size()):

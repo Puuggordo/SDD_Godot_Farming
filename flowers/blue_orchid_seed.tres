@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://bw6m4bjs0yshi"]
+
+[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://scenes/New Piskel.png" id="1_1s57q"]
+[ext_resource type="Script" path="res://Inventory/item.gd" id="1_distf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uybrf"]
+atlas = ExtResource("1_1s57q")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbrxx"]
+atlas = ExtResource("1_1s57q")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peoxp"]
+atlas = ExtResource("1_1s57q")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw1kc"]
+atlas = ExtResource("1_1s57q")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ihlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uybrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbrxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peoxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw1kc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfqhq"]
+atlas = ExtResource("1_1s57q")
+region = Rect2(48, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_distf")
+quantity = 0
+item_name = "Blue Orchid"
+type = "flower"
+item_texture = SubResource("AtlasTexture_bfqhq")
+max_stack = 0
+cost = 0
+strengths = Array[String]([])
+weaknesses = Array[String]([])
+pollen_range_min = 0
+pollen_range_max = 0
+growth_frames = SubResource("SpriteFrames_8ihlk")
+effect_pollen = 0.0
+effect_growth = 0.0
+effect_add_strengths = Array[String]([])
+effect_remove_weaknesses = Array[String]([])

@@ -49,6 +49,7 @@ func _process(delta):
 				Global.remove_item_from_inventory(item_data)
 				flower = item_data
 				plant_growth_animator.set_sprite_frames(item_data.growth_frames)
+				plant_growth_animator.speed_scale = 0
 				plant_growth_animator.play("default")
 				flower_growing = true
 				flower_alive = true

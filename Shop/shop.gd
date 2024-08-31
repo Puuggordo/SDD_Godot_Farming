@@ -15,6 +15,7 @@ func _process(delta):
 	total_label.text = "Total: " + str(sum)
 	cart_update()
 
+
 func cart_update():
 	sum = 0
 	for i in range(Global.shop_items.size()):
@@ -44,3 +45,5 @@ func _on_button_pressed():
 	currency_checker()
 	if sufficent_funds:
 		shop_item_to_inventory()
+
+
