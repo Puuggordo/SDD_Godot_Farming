@@ -3,29 +3,18 @@ extends Node
 var mouse_in_use = false
 var current_weather = "none"
 var current_day = 0
-var player_funds = 1000
+var player_funds = 100
 var player_pollen =0
 var quota = 0
 var days_until_quota = 0
 
-
-var carrot_number = 0
-var onion_number = 0
-var strawberry_number = 0
-var corn_number = 0 
-var lettuce_number = 0
-var apple_number = 0
-var orange_number = 0
-
-var strawberry_buy = false
-var corn_buy = false
-var lettuce_buy = false
 
 var inventory = []
 signal inventoryUpdate
 @onready var slot_scene = preload("res://Inventory/slot.tscn")
 var current_drag_data = null
 var cant_drop_data = false
+var applicable_active_screen = true
 
 var hotbar_selected_item
 var hotbar_can_scroll = true
@@ -144,6 +133,3 @@ func make_items_unique():
 			unique_items.append(null)
 	# Set the inventory into inventory with unique items
 	inventory = unique_items
-
-func apply_effect(effect):
-	pass
