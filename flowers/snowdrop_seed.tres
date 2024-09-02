@@ -38,16 +38,15 @@ region = Rect2(16, 32, 16, 16)
 
 [resource]
 script = ExtResource("1_ngkw0")
-quantity = 0
 item_name = "Snowdrop"
 type = "flower"
 item_texture = SubResource("AtlasTexture_7nnnx")
-max_stack = 8
-cost = 50
-strengths = Array[String]([])
-weaknesses = Array[String]([])
-pollen_range_min = 6
-pollen_range_max = 10
+max_stack = 9
+cost = 40
+strengths = Array[String](["snow"])
+weaknesses = Array[String](["heat"])
+pollen_range_min = 3
+pollen_range_max = 7
 growth_frames = SubResource("SpriteFrames_p4is5")
 effect_pollen = 0.0
 effect_growth = 0.0

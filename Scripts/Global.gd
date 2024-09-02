@@ -102,7 +102,6 @@ func remove_item_from_inventory(item: Item):
 		# If the items match
 		if slot != null and slot.item_name == item.item_name:
 			slot.quantity -= 1
-			print("minus")
 			# Send a singal to update the inventory
 			inventoryUpdate.emit()
 			return

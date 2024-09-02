@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3tpjl"]
-[ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farming/farmingTilesheetComplete.png" id="1_7c0cg"]
+[ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farmingTilesheetComplete.png" id="1_7c0cg"]
 [ext_resource type="PackedScene" uid="uid://c8m1b206mrphc" path="res://player.tscn" id="2_yyt5b"]
-[ext_resource type="PackedScene" uid="uid://bguvpkh55i8uf" path="res://scenes/farming/soil_container.tscn" id="5_f4mds"]
+[ext_resource type="PackedScene" path="res://scenes/farming/soil_container.tscn" id="5_f4mds"]
 [ext_resource type="Script" path="res://Scripts/coin_amount.gd" id="9_o8pld"]
 [ext_resource type="PackedScene" uid="uid://cr5kago3mpv6w" path="res://Inventory/hotbar.tscn" id="13_mib65"]
 [ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://Inventory/inventory.tscn" id="15_5ywqk"]
@@ -868,7 +868,10 @@ offset_bottom = 61.0
 
 [node name="Margin" type="MarginContainer" parent="UI/CoinsPanel"]
 layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
 
 [node name="coin_amount" type="HBoxContainer" parent="UI/CoinsPanel/Margin"]
 layout_mode = 2
@@ -891,25 +894,24 @@ size_flags_vertical = 1
 theme_override_font_sizes/font_size = 20
 vertical_alignment = 1
 
-[node name="NextdayButton" type="Button" parent="UI"]
-offset_right = 134.0
-offset_bottom = 31.0
-text = "Next day button"
-
 [node name="WeatherForecast" parent="UI" instance=ExtResource("16_n8gfj")]
-offset_left = 56.0
-offset_top = 4.0
-offset_right = 56.0
-offset_bottom = 4.0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 8.0
 
 [node name="PollenPanel" type="PanelContainer" parent="UI"]
-offset_left = 958.0
-offset_top = 66.0
-offset_right = 1003.0
-offset_bottom = 106.0
+offset_left = 960.0
+offset_top = 72.0
+offset_right = 1005.0
+offset_bottom = 112.0
 
 [node name="Margin" type="MarginContainer" parent="UI/PollenPanel"]
 layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
 
 [node name="pollen_amount" type="HBoxContainer" parent="UI/PollenPanel/Margin"]
 layout_mode = 2
@@ -958,7 +960,5 @@ position = Vector2(336, 120)
 [node name="Pause_node" type="Node" parent="."]
 process_mode = 2
 script = ExtResource("17_i5ojm")
-
-[connection signal="pressed" from="UI/NextdayButton" to="." method="_on_nextday_button_pressed"]
 
 [editable path="Player"]

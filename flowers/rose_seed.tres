@@ -52,16 +52,15 @@ region = Rect2(64, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_4dh3x")
-quantity = 0
 item_name = "Rose"
 type = "flower"
 item_texture = SubResource("AtlasTexture_4k36a")
-max_stack = 5
-cost = 30
-strengths = Array[String](["rain"])
-weaknesses = Array[String]([])
-pollen_range_min = 1
-pollen_range_max = 5
+max_stack = 9
+cost = 90
+strengths = Array[String]([])
+weaknesses = Array[String](["rain"])
+pollen_range_min = 9
+pollen_range_max = 15
 growth_frames = SubResource("SpriteFrames_7ruih")
 effect_pollen = 0.0
 effect_growth = 0.0

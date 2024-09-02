@@ -45,12 +45,11 @@ region = Rect2(48, 48, 16, 16)
 
 [resource]
 script = ExtResource("1_distf")
-quantity = 0
 item_name = "Blue Orchid"
 type = "flower"
 item_texture = SubResource("AtlasTexture_bfqhq")
-max_stack = 0
-cost = 0
+max_stack = 9
+cost = 30
 strengths = Array[String](["wind", "rain"])
 weaknesses = Array[String](["snow", "drought"])
 pollen_range_min = 3

@@ -2,9 +2,6 @@ extends CanvasLayer
 
 var current_item = 0
 var select = 0
-@onready var name_label = $ScrollContainer/ItemContainer/Item/Name
-@onready var cost_label = $ScrollContainer/ItemContainer/Item/Cost
-@onready var quantity_label = $ScrollContainer/ItemContainer/Item/Quantity
 @onready var item_container = $ScrollContainer/ItemContainer.get_child_count()
 @onready var total_label = $Total
 var sum = 0
@@ -44,10 +41,10 @@ func shop_item_to_inventory():
 	for i in range(Global.shop_items.size()):
 		# If the item exists, proceed to check its quantity.
 		if Global.shop_items[i] != null:
-			print(Global.shop_items[i].quantity)
 			# If the item's quantity is not zero, add it to the player's inventory and reset its quantity to zero.
 			if Global.shop_items[i].quantity != 0:
 				Global.add_item_to_inventory(Global.shop_items[i])
+				print(Global.shop_items[i].quantity)
 				Global.shop_items[i].quantity = 0
 
 func _on_button_pressed():

@@ -6,6 +6,7 @@ var early_game = [0.3, 0.1, 0.1, 0.1, 0]
 var mid_game = [0.1, 0.2, 0.15, 0.15, 0.1]
 var end_game = [0, 0.1, 0.1, 0.2, 0.3]
 
+
 func difficulty_scaler(day):
 	if day <= 7:
 		difficulty = "early_game"
@@ -31,17 +32,29 @@ func weather_picker(weights: Array):
 		elif picker >= weights_sorted[-1]:
 			return "none"
 
+
+func _ready():
+	# Populate the weather forecast list for the next 4 days based on the current difficulty.
+	for i in range(4):
+		# Determine the weather for each of the next 4 days.
+		Global.weather_forcast.append(weather_picker(difficulty_scaler(Global.current_day)))
+	# Set the current weather to the first item in the forecast list.
+	Global.current_weather = Global.weather_forcast[0]
+
+
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:
 		Global.applicable_active_screen = false
 		$CanvasLayer.show()
 		$"../UI/Hotbar".hide()
 
+
 func _on_area_2d_body_exited(body):
 	Global.applicable_active_screen = true
 	$CanvasLayer.hide()
 	$shop.hide()
 	$"../UI/Hotbar".show()
+
 
 func _on_sleep_button_pressed():
 	Global.player_funds += Global.player_pollen * 10

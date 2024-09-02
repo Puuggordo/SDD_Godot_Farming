@@ -45,16 +45,15 @@ region = Rect2(48, 16, 16, 16)
 
 [resource]
 script = ExtResource("1_yvhx1")
-quantity = 0
 item_name = "Sunflower"
 type = "flower"
 item_texture = SubResource("AtlasTexture_iudsd")
-max_stack = 0
-cost = 0
-strengths = Array[String]([])
-weaknesses = Array[String]([])
-pollen_range_min = 0
-pollen_range_max = 0
+max_stack = 9
+cost = 20
+strengths = Array[String](["drought", "heat"])
+weaknesses = Array[String](["snow"])
+pollen_range_min = 2
+pollen_range_max = 5
 growth_frames = SubResource("SpriteFrames_8gs71")
 effect_pollen = 0.0
 effect_growth = 0.0
