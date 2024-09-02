@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8pn4roac3kh6"
-path="res://.godot/imported/InventoryRect.png-05f248998e626e86d0c202009ad51348.ctex"
+uid="uid://cjmx1p1epr4w1"
+path="res://.godot/imported/farmingTilesheetComplete.png-61df7960462c20a74632c7216d9e5eb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/InventoryRect.png"
-dest_files=["res://.godot/imported/InventoryRect.png-05f248998e626e86d0c202009ad51348.ctex"]
+source_file="res://farming/farmingTilesheetComplete.png"
+dest_files=["res://.godot/imported/farmingTilesheetComplete.png-61df7960462c20a74632c7216d9e5eb5.ctex"]
 
 [params]
 

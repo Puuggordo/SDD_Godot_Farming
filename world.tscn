@@ -1,15 +1,76 @@
-[gd_scene load_steps=19 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=28 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3tpjl"]
-[ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://scenes/farmingTilesheetComplete.png" id="1_7c0cg"]
-[ext_resource type="PackedScene" uid="uid://c8m1b206mrphc" path="res://player.tscn" id="2_yyt5b"]
-[ext_resource type="PackedScene" path="res://scenes/farming/soil_container.tscn" id="5_f4mds"]
-[ext_resource type="Script" path="res://Scripts/coin_amount.gd" id="9_o8pld"]
-[ext_resource type="PackedScene" uid="uid://cr5kago3mpv6w" path="res://Inventory/hotbar.tscn" id="13_mib65"]
-[ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://Inventory/inventory.tscn" id="15_5ywqk"]
-[ext_resource type="PackedScene" uid="uid://bv0fuljgxr0k4" path="res://beehive.tscn" id="15_joaky"]
-[ext_resource type="PackedScene" uid="uid://baw5ncvwn45hw" path="res://weather/weather_forecast.tscn" id="16_n8gfj"]
+[ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://farming/farmingTilesheetComplete.png" id="1_7c0cg"]
+[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://flowers/Flowers.png" id="2_8kx3o"]
+[ext_resource type="PackedScene" uid="uid://c8m1b206mrphc" path="res://player/player.tscn" id="2_yyt5b"]
+[ext_resource type="Script" path="res://inventory/item.gd" id="3_uu2y6"]
+[ext_resource type="PackedScene" uid="uid://bguvpkh55i8uf" path="res://farming/soil_container.tscn" id="5_f4mds"]
+[ext_resource type="Script" path="res://UI_coin_pollen_amount.gd" id="9_o8pld"]
+[ext_resource type="PackedScene" uid="uid://cr5kago3mpv6w" path="res://inventory/hotbar.tscn" id="13_mib65"]
+[ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory/inventory.tscn" id="15_5ywqk"]
+[ext_resource type="PackedScene" uid="uid://bv0fuljgxr0k4" path="res://beehive/beehive.tscn" id="15_joaky"]
+[ext_resource type="PackedScene" uid="uid://baw5ncvwn45hw" path="res://weather_quota/weather_forecast.tscn" id="16_n8gfj"]
 [ext_resource type="Script" path="res://pause_node.gd" id="17_i5ojm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a42t1"]
+atlas = ExtResource("2_8kx3o")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0yln"]
+atlas = ExtResource("2_8kx3o")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxxyc"]
+atlas = ExtResource("2_8kx3o")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmj2o"]
+atlas = ExtResource("2_8kx3o")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gs71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a42t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0yln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxxyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmj2o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iudsd"]
+atlas = ExtResource("2_8kx3o")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="Resource" id="Resource_7107p"]
+resource_local_to_scene = true
+script = ExtResource("3_uu2y6")
+quantity = 0
+item_name = "Sunflower"
+type = "flower"
+item_texture = SubResource("AtlasTexture_iudsd")
+max_stack = 9
+cost = 20
+strengths = Array[String](["drought", "heat"])
+weaknesses = Array[String](["snow"])
+pollen_range_min = 2
+pollen_range_max = 5
+growth_frames = SubResource("SpriteFrames_8gs71")
+effect_pollen = 0.0
+effect_growth = 0.0
+effect_add_strengths = Array[String]([])
+effect_remove_weaknesses = Array[String]([])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yna"]
 texture = ExtResource("1_7c0cg")
@@ -827,6 +888,7 @@ animations = [{
 [node name="world" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_3tpjl")
+sunflower = SubResource("Resource_7107p")
 
 [node name="background" type="TileMap" parent="."]
 texture_filter = 1
@@ -954,7 +1016,6 @@ offset_right = 226.286
 offset_bottom = 134.857
 
 [node name="Beehive" parent="." instance=ExtResource("15_joaky")]
-visible = true
 position = Vector2(336, 120)
 
 [node name="Pause_node" type="Node" parent="."]

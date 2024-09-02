@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv0fuljgxr0k4"]
+
+[ext_resource type="Script" path="res://beehive/beehive.gd" id="1_8vq4q"]
+[ext_resource type="Texture2D" uid="uid://nkktrygx2khb" path="res://beehive/Beehive.png" id="2_eb6m6"]
+[ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://shop/shop.tscn" id="3_klgqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyguw"]
+size = Vector2(36, 15)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubegp"]
+radius = 6.0
+height = 44.0
+
+[node name="Beehive" type="StaticBody2D"]
+z_index = 1
+script = ExtResource("1_8vq4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("2_eb6m6")
+offset = Vector2(0, -10)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 32.5)
+shape = SubResource("RectangleShape2D_yyguw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 13)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ubegp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.0
+offset_top = -326.0
+offset_right = -577.0
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 194.0
+offset_right = 817.0
+offset_bottom = 281.0
+theme_override_font_sizes/font_size = 30
+text = "Welcome to the HoneyHive (TM)
+What would you like do do?"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 602.0
+offset_right = 755.0
+offset_bottom = 622.0
+theme_override_font_sizes/font_size = 14
+text = "*The HoneyHive is a product of Honey Company (Inc.)"
+horizontal_alignment = 1
+
+[node name="SleepButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 2
+offset_left = 449.0
+offset_top = 370.0
+offset_right = 545.0
+offset_bottom = 420.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Sleep"
+
+[node name="ShopButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 2
+offset_left = 609.0
+offset_top = 370.0
+offset_right = 705.0
+offset_bottom = 420.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Shop"
+
+[node name="Deposit quota" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 2
+offset_left = 465.0
+offset_top = 458.0
+offset_right = 689.0
+offset_bottom = 508.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Deposit quota"
+
+[node name="shop" parent="." instance=ExtResource("3_klgqc")]
+visible = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/SleepButton" to="." method="_on_sleep_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Deposit quota" to="." method="_on_deposit_quota_pressed"]

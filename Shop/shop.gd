@@ -44,7 +44,6 @@ func shop_item_to_inventory():
 			# If the item's quantity is not zero, add it to the player's inventory and reset its quantity to zero.
 			if Global.shop_items[i].quantity != 0:
 				Global.add_item_to_inventory(Global.shop_items[i])
-				print(Global.shop_items[i].quantity)
 				Global.shop_items[i].quantity = 0
 
 func _on_button_pressed():

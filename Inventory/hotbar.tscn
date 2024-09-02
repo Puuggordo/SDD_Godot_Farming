@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cr5kago3mpv6w"]
 
-[ext_resource type="Script" path="res://Inventory/hotbar.gd" id="1_b6gkt"]
-[ext_resource type="Texture2D" uid="uid://8pn4roac3kh6" path="res://Inventory/InventoryRect.png" id="1_klj5c"]
-[ext_resource type="PackedScene" uid="uid://dnrogghhhyjiy" path="res://Inventory/slot.tscn" id="3_sbogc"]
+[ext_resource type="Script" path="res://inventory/hotbar.gd" id="1_b6gkt"]
+[ext_resource type="Texture2D" uid="uid://8pn4roac3kh6" path="res://inventory/InventoryRect.png" id="1_klj5c"]
+[ext_resource type="PackedScene" uid="uid://dnrogghhhyjiy" path="res://inventory/slot.tscn" id="3_sbogc"]
 
 [node name="Hotbar" type="Control"]
 layout_mode = 3

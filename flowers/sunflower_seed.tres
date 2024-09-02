@@ -1,22 +1,22 @@
 [gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://d01sh7qao4vpt"]
 
-[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://scenes/New Piskel.png" id="1_7msj5"]
-[ext_resource type="Script" path="res://Inventory/item.gd" id="1_yvhx1"]
+[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://flowers/Flowers.png" id="1_6tlai"]
+[ext_resource type="Script" path="res://inventory/item.gd" id="1_yvhx1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a42t1"]
-atlas = ExtResource("1_7msj5")
+atlas = ExtResource("1_6tlai")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0yln"]
-atlas = ExtResource("1_7msj5")
+atlas = ExtResource("1_6tlai")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sxxyc"]
-atlas = ExtResource("1_7msj5")
+atlas = ExtResource("1_6tlai")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmj2o"]
-atlas = ExtResource("1_7msj5")
+atlas = ExtResource("1_6tlai")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8gs71"]
@@ -40,18 +40,20 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iudsd"]
-atlas = ExtResource("1_7msj5")
+atlas = ExtResource("1_6tlai")
 region = Rect2(48, 16, 16, 16)
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_yvhx1")
+quantity = 0
 item_name = "Sunflower"
 type = "flower"
 item_texture = SubResource("AtlasTexture_iudsd")
 max_stack = 9
 cost = 20
 strengths = Array[String](["drought", "heat"])
-weaknesses = Array[String](["snow"])
+weaknesses = Array[String](["rain"])
 pollen_range_min = 2
 pollen_range_max = 5
 growth_frames = SubResource("SpriteFrames_8gs71")

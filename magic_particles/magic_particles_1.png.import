@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8pn4roac3kh6"
-path="res://.godot/imported/InventoryRect.png-05f248998e626e86d0c202009ad51348.ctex"
+uid="uid://c0usp2vnfimvl"
+path="res://.godot/imported/magic_particles_1.png-b4cfb177b08b4a57fd3a6ebeeca3d365.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/InventoryRect.png"
-dest_files=["res://.godot/imported/InventoryRect.png-05f248998e626e86d0c202009ad51348.ctex"]
+source_file="res://magic_particles/magic_particles_1.png"
+dest_files=["res://.godot/imported/magic_particles_1.png-b4cfb177b08b4a57fd3a6ebeeca3d365.ctex"]
 
 [params]
 

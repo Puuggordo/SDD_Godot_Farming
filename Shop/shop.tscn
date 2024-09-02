@@ -1,12 +1,72 @@
-[gd_scene load_steps=8 format=3 uid="uid://vcdoku1x7cjg"]
+[gd_scene load_steps=16 format=3 uid="uid://vcdoku1x7cjg"]
 
-[ext_resource type="Script" path="res://Shop/shop.gd" id="1_222po"]
-[ext_resource type="PackedScene" uid="uid://cqt3el0jmrax" path="res://Shop/shop_item.tscn" id="2_ofy8i"]
+[ext_resource type="Script" path="res://shop/shop.gd" id="1_222po"]
+[ext_resource type="PackedScene" uid="uid://cqt3el0jmrax" path="res://shop/shop_item.tscn" id="2_ofy8i"]
 [ext_resource type="Resource" uid="uid://dyo1icmytxftu" path="res://flowers/rose_seed.tres" id="3_de1md"]
+[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://flowers/Flowers.png" id="3_t0a0i"]
+[ext_resource type="Script" path="res://inventory/item.gd" id="4_6gqqt"]
 [ext_resource type="Resource" uid="uid://ca6qcynhj4psp" path="res://flowers/snowdrop_seed.tres" id="4_uyxdg"]
-[ext_resource type="Resource" uid="uid://d01sh7qao4vpt" path="res://flowers/sunflower_seed.tres" id="5_r5ps4"]
 [ext_resource type="Resource" uid="uid://bw6m4bjs0yshi" path="res://flowers/blue_orchid_seed.tres" id="6_hlqj1"]
 [ext_resource type="Resource" uid="uid://dtscpdvfcn7cw" path="res://flowers/lavender_seed.tres" id="7_d06yg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a42t1"]
+atlas = ExtResource("3_t0a0i")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0yln"]
+atlas = ExtResource("3_t0a0i")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxxyc"]
+atlas = ExtResource("3_t0a0i")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmj2o"]
+atlas = ExtResource("3_t0a0i")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gs71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a42t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0yln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxxyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmj2o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iudsd"]
+atlas = ExtResource("3_t0a0i")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="Resource" id="Resource_ixyfr"]
+resource_local_to_scene = true
+script = ExtResource("4_6gqqt")
+quantity = 0
+item_name = "Sunflower"
+type = "flower"
+item_texture = SubResource("AtlasTexture_iudsd")
+max_stack = 9
+cost = 20
+strengths = Array[String](["drought", "heat"])
+weaknesses = Array[String](["rain"])
+pollen_range_min = 2
+pollen_range_max = 5
+growth_frames = SubResource("SpriteFrames_8gs71")
+effect_pollen = 0.0
+effect_growth = 0.0
+effect_add_strengths = Array[String]([])
+effect_remove_weaknesses = Array[String]([])
 
 [node name="shop" type="CanvasLayer"]
 script = ExtResource("1_222po")
@@ -30,7 +90,7 @@ layout_mode = 2
 
 [node name="Sunflower" parent="ScrollContainer/ItemContainer" instance=ExtResource("2_ofy8i")]
 layout_mode = 2
-item = ExtResource("5_r5ps4")
+item = SubResource("Resource_ixyfr")
 
 [node name="BlueOrchid" parent="ScrollContainer/ItemContainer" instance=ExtResource("2_ofy8i")]
 layout_mode = 2

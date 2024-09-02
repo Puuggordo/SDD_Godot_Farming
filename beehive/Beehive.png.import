@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8pn4roac3kh6"
-path="res://.godot/imported/InventoryRect.png-05f248998e626e86d0c202009ad51348.ctex"
+uid="uid://nkktrygx2khb"
+path="res://.godot/imported/Beehive.png-6bbd5e6fd1950e5f157f689b8b2bbf82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/InventoryRect.png"
-dest_files=["res://.godot/imported/InventoryRect.png-05f248998e626e86d0c202009ad51348.ctex"]
+source_file="res://beehive/Beehive.png"
+dest_files=["res://.godot/imported/Beehive.png-6bbd5e6fd1950e5f157f689b8b2bbf82.ctex"]
 
 [params]
 

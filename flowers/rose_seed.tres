@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="Item" load_steps=10 format=3 uid="uid://dyo1icmytxftu"]
 
-[ext_resource type="Script" path="res://Inventory/item.gd" id="1_4dh3x"]
-[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://scenes/New Piskel.png" id="1_oumki"]
+[ext_resource type="Script" path="res://inventory/item.gd" id="1_4dh3x"]
+[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://flowers/Flowers.png" id="1_uv6u1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkha1"]
-atlas = ExtResource("1_oumki")
+atlas = ExtResource("1_uv6u1")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttw7k"]
-atlas = ExtResource("1_oumki")
+atlas = ExtResource("1_uv6u1")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u2u3a"]
-atlas = ExtResource("1_oumki")
+atlas = ExtResource("1_uv6u1")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cx8fv"]
-atlas = ExtResource("1_oumki")
+atlas = ExtResource("1_uv6u1")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lx8a4"]
-atlas = ExtResource("1_oumki")
+atlas = ExtResource("1_uv6u1")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7ruih"]
@@ -47,11 +47,12 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4k36a"]
-atlas = ExtResource("1_oumki")
+atlas = ExtResource("1_uv6u1")
 region = Rect2(64, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_4dh3x")
+quantity = 0
 item_name = "Rose"
 type = "flower"
 item_texture = SubResource("AtlasTexture_4k36a")

@@ -1,6 +1,6 @@
 extends Panel
 
-var item = null
+
 var stack_count = 0
 var inventory_slot = true
 @onready var icon = $CenterContainer/item
@@ -18,14 +18,17 @@ func set_item(new_item: Item,quantity):
 	count_label.text = str(quantity)
 	set_tooltip_text(new_item.item_name)
 	BG_sprite.frame = 1
+	tooltip_text = """Strengths: %s 
+	Weaknesses: %s 
+	Pollen range: %s-%s""" % [str(new_item.strengths), str(new_item.weaknesses), str(new_item.pollen_range_min), str(new_item.pollen_range_max)]
 
 
 func set_empty():
-	item = null
 	icon.texture = null
 	count_label.text = ""
 	set_tooltip_text("")
 	BG_sprite.frame = 0
+	tooltip_text = ""
 
 
 func _get_drag_data(at_position):

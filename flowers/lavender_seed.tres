@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://dtscpdvfcn7cw"]
 
-[ext_resource type="Script" path="res://Inventory/item.gd" id="1_32emf"]
-[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://scenes/New Piskel.png" id="1_48y3u"]
+[ext_resource type="Script" path="res://inventory/item.gd" id="1_32emf"]
+[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://flowers/Flowers.png" id="1_up7es"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kds2"]
-atlas = ExtResource("1_48y3u")
+atlas = ExtResource("1_up7es")
 region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5urta"]
-atlas = ExtResource("1_48y3u")
+atlas = ExtResource("1_up7es")
 region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m15lk"]
-atlas = ExtResource("1_48y3u")
+atlas = ExtResource("1_up7es")
 region = Rect2(64, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yt0uv"]
@@ -33,11 +33,12 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aj74g"]
-atlas = ExtResource("1_48y3u")
+atlas = ExtResource("1_up7es")
 region = Rect2(64, 32, 16, 16)
 
 [resource]
 script = ExtResource("1_32emf")
+quantity = 0
 item_name = "Lavender"
 type = "flower"
 item_texture = SubResource("AtlasTexture_aj74g")

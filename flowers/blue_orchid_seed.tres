@@ -1,22 +1,22 @@
 [gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://bw6m4bjs0yshi"]
 
-[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://scenes/New Piskel.png" id="1_1s57q"]
-[ext_resource type="Script" path="res://Inventory/item.gd" id="1_distf"]
+[ext_resource type="Script" path="res://inventory/item.gd" id="1_distf"]
+[ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://flowers/Flowers.png" id="1_x42x0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uybrf"]
-atlas = ExtResource("1_1s57q")
+atlas = ExtResource("1_x42x0")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbrxx"]
-atlas = ExtResource("1_1s57q")
+atlas = ExtResource("1_x42x0")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_peoxp"]
-atlas = ExtResource("1_1s57q")
+atlas = ExtResource("1_x42x0")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vw1kc"]
-atlas = ExtResource("1_1s57q")
+atlas = ExtResource("1_x42x0")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ihlk"]
@@ -40,11 +40,12 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfqhq"]
-atlas = ExtResource("1_1s57q")
+atlas = ExtResource("1_x42x0")
 region = Rect2(48, 48, 16, 16)
 
 [resource]
 script = ExtResource("1_distf")
+quantity = 0
 item_name = "Blue Orchid"
 type = "flower"
 item_texture = SubResource("AtlasTexture_bfqhq")

@@ -1,5 +1,9 @@
 extends Node2D
 
+@export var sunflower: Item
+
+func _ready():
+	Global.add_item_to_inventory(sunflower)
 
 func _on_shop_area_body_entered(body):
 	# Show the shop UI when the player enters the shop area.
