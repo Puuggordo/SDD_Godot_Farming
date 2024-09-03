@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://x0awtcbiwvjl"]
+[gd_scene load_steps=27 format=3 uid="uid://x0awtcbiwvjl"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3tpjl"]
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://farming/farmingTilesheetComplete.png" id="1_7c0cg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8m1b206mrphc" path="res://player/player.tscn" id="2_yyt5b"]
 [ext_resource type="Script" path="res://inventory/item.gd" id="3_uu2y6"]
 [ext_resource type="PackedScene" uid="uid://bguvpkh55i8uf" path="res://farming/soil_container.tscn" id="5_f4mds"]
+[ext_resource type="Texture2D" uid="uid://dfnkj5d7h8tda" path="res://Pollen and honey.png" id="8_xrkv7"]
 [ext_resource type="Script" path="res://UI_coin_pollen_amount.gd" id="9_o8pld"]
 [ext_resource type="PackedScene" uid="uid://cr5kago3mpv6w" path="res://inventory/hotbar.tscn" id="13_mib65"]
 [ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory/inventory.tscn" id="15_5ywqk"]
@@ -56,7 +57,7 @@ region = Rect2(48, 16, 16, 16)
 [sub_resource type="Resource" id="Resource_7107p"]
 resource_local_to_scene = true
 script = ExtResource("3_uu2y6")
-quantity = 5
+quantity = 9
 item_name = "Sunflower"
 type = "flower"
 item_texture = SubResource("AtlasTexture_iudsd")
@@ -855,35 +856,13 @@ texture = ExtResource("1_7c0cg")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_xyvpq")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gduqr"]
-atlas = ExtResource("1_7c0cg")
-region = Rect2(64, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_53tgf"]
+atlas = ExtResource("8_xrkv7")
+region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gt0ho"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gduqr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cj4r"]
-atlas = ExtResource("1_7c0cg")
-region = Rect2(48, 80, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r6vth"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5cj4r")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kasu"]
+atlas = ExtResource("8_xrkv7")
+region = Rect2(0, 0, 16, 16)
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
@@ -922,51 +901,11 @@ limit_bottom = 335
 process_mode = 3
 script = ExtResource("9_o8pld")
 
-[node name="CoinsPanel" type="PanelContainer" parent="UI"]
-offset_left = 960.0
-offset_top = 21.0
-offset_right = 1008.0
-offset_bottom = 61.0
-
-[node name="Margin" type="MarginContainer" parent="UI/CoinsPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 1
-
-[node name="coin_amount" type="HBoxContainer" parent="UI/CoinsPanel/Margin"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="UI/CoinsPanel/Margin/coin_amount"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/CoinsPanel/Margin/coin_amount/Control"]
-position = Vector2(20, 20)
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_gt0ho")
-
-[node name="CoinLabel" type="Label" parent="UI/CoinsPanel/Margin/coin_amount"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 20
-vertical_alignment = 1
-
-[node name="WeatherForecast" parent="UI" instance=ExtResource("16_n8gfj")]
-offset_left = 64.0
-offset_top = 8.0
-offset_right = 64.0
-offset_bottom = 8.0
-
 [node name="PollenPanel" type="PanelContainer" parent="UI"]
-offset_left = 960.0
-offset_top = 72.0
-offset_right = 1005.0
-offset_bottom = 112.0
+offset_left = 928.0
+offset_top = 75.0
+offset_right = 977.0
+offset_bottom = 117.0
 
 [node name="Margin" type="MarginContainer" parent="UI/PollenPanel"]
 layout_mode = 2
@@ -983,10 +922,10 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/PollenPanel/Margin/pollen_amount/Control"]
+[node name="AnimatedSprite2D" type="Sprite2D" parent="UI/PollenPanel/Margin/pollen_amount/Control"]
 position = Vector2(22, 20)
 scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_r6vth")
+texture = SubResource("AtlasTexture_53tgf")
 
 [node name="PollenLabel" type="Label" parent="UI/PollenPanel/Margin/pollen_amount"]
 unique_name_in_owner = true
@@ -995,6 +934,46 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 20
 vertical_alignment = 1
+
+[node name="CoinsPanel" type="PanelContainer" parent="UI"]
+offset_left = 928.0
+offset_top = 24.0
+offset_right = 977.0
+offset_bottom = 66.0
+
+[node name="Margin" type="MarginContainer" parent="UI/CoinsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
+
+[node name="coin_amount" type="HBoxContainer" parent="UI/CoinsPanel/Margin"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="UI/CoinsPanel/Margin/coin_amount"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="UI/CoinsPanel/Margin/coin_amount/Control"]
+position = Vector2(20, 20)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_5kasu")
+
+[node name="CoinLabel" type="Label" parent="UI/CoinsPanel/Margin/coin_amount"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+
+[node name="WeatherForecast" parent="UI" instance=ExtResource("16_n8gfj")]
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 8.0
 
 [node name="Hotbar" parent="UI" instance=ExtResource("13_mib65")]
 offset_left = 344.0

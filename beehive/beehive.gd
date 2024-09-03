@@ -50,6 +50,10 @@ func _ready():
 	# Set the current weather to the first item in the forecast list.
 	Global.current_weather = Global.weather_forcast[0]
 
+func _process(delta):
+	if Global.quota > 0 and Global.player_funds == 0 and Global.days_until_quota == 0:
+		$GameOverScreen.show()
+		get_tree().paused = true
 
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:
@@ -66,17 +70,20 @@ func _on_area_2d_body_exited(body):
 
 
 func _on_sleep_button_pressed():
-	Global.player_funds += Global.player_pollen * 10
-	Global.player_pollen = 0
-	Global.current_day += 1
-	Global.days_until_quota -= 1
-	Global.weather_forcast.remove_at(0)
-	Global.weather_forcast.append(weather_picker(difficulty_scaler(Global.current_day)))
-	Global.current_weather = Global.weather_forcast[0]
-	Global.applicable_active_screen = true
-	$CanvasLayer.hide()
-	$"../UI/Hotbar".show()
-
+	if Global.days_until_quota > 0 or Global.quota == 0:
+		Global.player_funds += Global.player_pollen * 10
+		Global.player_pollen = 0
+		Global.current_day += 1
+		Global.days_until_quota -= 1
+		Global.weather_forcast.remove_at(0)
+		Global.weather_forcast.append(weather_picker(difficulty_scaler(Global.current_day)))
+		Global.current_weather = Global.weather_forcast[0]
+		Global.applicable_active_screen = true
+		$CanvasLayer.hide()
+		$"../UI/Hotbar".show()
+		$CanvasLayer/Control/RichTextLabel.hide()
+	else:
+		$CanvasLayer/Control/RichTextLabel.show()
 
 func _on_shop_button_pressed():
 	Global.applicable_active_screen = false

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv0fuljgxr0k4"]
+[gd_scene load_steps=7 format=3 uid="uid://bv0fuljgxr0k4"]
 
 [ext_resource type="Script" path="res://beehive/beehive.gd" id="1_8vq4q"]
 [ext_resource type="Texture2D" uid="uid://nkktrygx2khb" path="res://beehive/Beehive.png" id="2_eb6m6"]
 [ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://shop/shop.tscn" id="3_klgqc"]
+[ext_resource type="PackedScene" uid="uid://cq15jqt347vhg" path="res://game_over_screen.tscn" id="4_xs3vq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyguw"]
 size = Vector2(36, 15)
@@ -60,9 +61,9 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 337.0
-offset_top = 194.0
+offset_top = 108.0
 offset_right = 817.0
-offset_bottom = 281.0
+offset_bottom = 195.0
 theme_override_font_sizes/font_size = 30
 text = "Welcome to the HoneyHive (TM)
 What would you like do do?"
@@ -81,9 +82,9 @@ horizontal_alignment = 1
 [node name="SleepButton" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 2
 offset_left = 449.0
-offset_top = 370.0
+offset_top = 294.0
 offset_right = 545.0
-offset_bottom = 420.0
+offset_bottom = 344.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
@@ -92,9 +93,9 @@ text = "Sleep"
 [node name="ShopButton" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 2
 offset_left = 609.0
-offset_top = 370.0
+offset_top = 294.0
 offset_right = 705.0
-offset_bottom = 420.0
+offset_bottom = 344.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
@@ -111,7 +112,23 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "Deposit quota"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
+visible = false
+clip_contents = false
+layout_mode = 0
+offset_left = 457.0
+offset_top = 394.0
+offset_right = 697.0
+offset_bottom = 434.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[pulse freq=1.0 color=#ffffff40 ease=2.0][color=red]You must deposit quota[/color]"
+
 [node name="shop" parent="." instance=ExtResource("3_klgqc")]
+visible = false
+
+[node name="GameOverScreen" parent="." instance=ExtResource("4_xs3vq")]
 visible = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -3,12 +3,13 @@ extends Node
 var mouse_in_use = false
 var current_weather = "none"
 var current_day = 0
-var player_funds = 10000
+var player_funds = 1000000
 var player_pollen = 0
 var quota = 0
 var days_until_quota = 0
 var times_quota_fulfilled = 0
-
+var starting_quota = 100
+var deadline = 14
 
 var inventory = []
 signal inventoryUpdate
@@ -22,6 +23,7 @@ var hotbar_can_scroll = true
 
 var shop_items = []
 
+
 var weather_forcast = []
 
 func array_checker(array: Array, value: String):
@@ -33,14 +35,12 @@ func array_checker(array: Array, value: String):
 
 
 func _ready():
-	# Initialize the inventory with 15 slots
 	inventory.resize(15)
-	# Initialize the shop with 5 slots
-	shop_items.resize(5)
+	shop_items.resize(7)
 	# Set the number of days remaining to meet the quota
-	days_until_quota = 14
+	days_until_quota = deadline
 	# Set the initial quota value
-	quota = 100
+	quota = starting_quota
 
 
 func _process(delta):
@@ -182,9 +182,9 @@ func make_items_unique():
 	inventory = unique_items
 
 func calculate_quota():
-	if days_until_quota == 0:
+	if days_until_quota == -1:
 		times_quota_fulfilled += 1
-		days_until_quota = 14
+		days_until_quota = deadline
 		# Generate a normally-distributed random number with a mean of 0.5 and a deviation of 0.095.
 		# Adding 1 to shift the range of the generated number to be around 1 instead of 0.5.
 		var randomfn = randfn(0.5, 0.095) + 1

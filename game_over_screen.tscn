@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq15jqt347vhg"]
+
+[ext_resource type="Script" path="res://GameOverScreen.gd" id="1_ihkte"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_ihkte")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.906195, 0.741529, 0.224243, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 368.0
+offset_top = 200.0
+offset_right = 776.0
+offset_bottom = 304.0
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[color=red]GAME OVER[/color]"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 384.0
+offset_top = 336.0
+offset_right = 762.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "You survived X days"

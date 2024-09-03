@@ -9,10 +9,11 @@ region = Rect2(32, 16, 16, 16)
 
 [resource]
 script = ExtResource("1_xg0rj")
+quantity = 0
 item_name = "Growth Fertliser 1"
 type = "fertiliser"
 item_texture = SubResource("AtlasTexture_dm8tm")
-max_stack = 4
+max_stack = 9
 cost = 15
 strengths = Array[String]([])
 weaknesses = Array[String]([])

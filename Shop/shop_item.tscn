@@ -66,11 +66,13 @@ expand_mode = 2
 layout_mode = 2
 offset_left = 77.0
 offset_top = 20.0
-offset_right = 124.0
+offset_right = 208.0
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Name"
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Cost" type="Label" parent="."]
 layout_mode = 2
