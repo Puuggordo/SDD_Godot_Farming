@@ -19,28 +19,17 @@ var mouse_button_held = false
 
 func _ready():
 	plant_growth_animator.play("none")
-	#var rect_visual = ColorRect.new()
-	#rect_visual.color = Color(1, 0, 0, 0.5)  # Red color with 50% opacity
-	#rect_visual.position = Vector2(0, 0)  # Set to (0, 0) to align with the soil node's top-left corner	rect_visual.size = node_size  # Set the size to match the Rect2
-	#rect_visual.size = node_size  # Set the size to match the Rect2
-	#add_child(rect_visual) # Add the ColorRect as a child of the current node
 
 func _process(delta):
 	if Global.current_day == previous_day + 1:
 		previous_day = Global.current_day
-		if item_data != null:
-			if flower_alive:
-				if !flower_grown:
-					flower_affinities_handler()
+		if item_data != null and flower_alive and !flower_grown:
+			flower_affinities_handler()
 		var max_frames = plant_growth_animator.get_sprite_frames().get_frame_count("default") - 1
-		#print("max frames: ",max_frames)
-		#print("frame before: ",plant_growth_animator.frame)
 		if flower_alive and max_frames != 0:
 			plant_growth_animator.frame += 1 * (growth_multiplier)
-			#print("frame after: ",plant_growth_animator.frame)
 			if plant_growth_animator.frame == max_frames:
 				flower_grown = true
-
 	if mouse_button_held and Global.hotbar_selected_item != null:
 		# Get the mouse position in global coordinates
 		var mouse_pos = get_global_mouse_position()
@@ -113,8 +102,6 @@ func apply_fertiliser_effect():
 	particle.show()
 	await get_tree().create_timer(.5).timeout
 	particle.hide()
-	#fertiliser.effect_remove_weaknesses
-	#fertiliser.effect_add_strengths
 
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):

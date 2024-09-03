@@ -4,11 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cjmx1p1epr4w1" path="res://farming/farmingTilesheetComplete.png" id="1_7c0cg"]
 [ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://flowers/Flowers.png" id="2_8kx3o"]
 [ext_resource type="PackedScene" uid="uid://c8m1b206mrphc" path="res://player/player.tscn" id="2_yyt5b"]
-[ext_resource type="Script" path="res://inventory/item.gd" id="3_uu2y6"]
 [ext_resource type="PackedScene" uid="uid://bguvpkh55i8uf" path="res://farming/soil_container.tscn" id="5_f4mds"]
 [ext_resource type="Script" path="res://UI_coin_pollen_amount.gd" id="9_o8pld"]
-[ext_resource type="PackedScene" uid="uid://cr5kago3mpv6w" path="res://inventory/hotbar.tscn" id="13_mib65"]
-[ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://inventory/inventory.tscn" id="15_5ywqk"]
+[ext_resource type="PackedScene" uid="uid://cr5kago3mpv6w" path="res://Inventory/hotbar.tscn" id="13_mib65"]
+[ext_resource type="PackedScene" uid="uid://ctxcpuh2fnlr0" path="res://Inventory/inventory.tscn" id="15_5ywqk"]
 [ext_resource type="PackedScene" uid="uid://bv0fuljgxr0k4" path="res://beehive/beehive.tscn" id="15_joaky"]
 [ext_resource type="PackedScene" uid="uid://baw5ncvwn45hw" path="res://weather_quota/weather_forecast.tscn" id="16_n8gfj"]
 [ext_resource type="Script" path="res://pause_node.gd" id="17_i5ojm"]
@@ -53,10 +52,38 @@ animations = [{
 atlas = ExtResource("2_8kx3o")
 region = Rect2(48, 16, 16, 16)
 
+[sub_resource type="GDScript" id="GDScript_qgy8i"]
+script/source = "extends Resource
+class_name Item
+
+var weather_types = [\"rain\", \"wind\", \"heat\", \"drought\", \"snow\"]
+@export var quantity: int
+@export var item_name: String
+@export_enum(\"flower\", \"fertiliser\") var type: String
+@export var item_texture: Texture2D
+@export var max_stack: int
+@export var cost: int
+#@export var inventory_quantity: int
+#@export var shop_quantity: int
+
+@export_subgroup(\"Flower\")
+@export var strengths: Array[String]
+@export var weaknesses: Array[String]
+@export var pollen_range_min: int
+@export var pollen_range_max: int
+@export var growth_frames: SpriteFrames
+
+@export_subgroup(\"Fertiliser\")
+@export var effect_pollen: float
+@export var effect_growth: float
+@export var effect_add_strengths: Array[String]
+@export var effect_remove_weaknesses: Array[String]
+"
+
 [sub_resource type="Resource" id="Resource_7107p"]
 resource_local_to_scene = true
-script = ExtResource("3_uu2y6")
-quantity = 5
+script = SubResource("GDScript_qgy8i")
+quantity = null
 item_name = "Sunflower"
 type = "flower"
 item_texture = SubResource("AtlasTexture_iudsd")
@@ -67,10 +94,10 @@ weaknesses = Array[String](["snow"])
 pollen_range_min = 2
 pollen_range_max = 5
 growth_frames = SubResource("SpriteFrames_8gs71")
-effect_pollen = 0.0
-effect_growth = 0.0
-effect_add_strengths = Array[String]([])
-effect_remove_weaknesses = Array[String]([])
+effect_pollen = null
+effect_growth = null
+effect_add_strengths = null
+effect_remove_weaknesses = null
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yna"]
 texture = ExtResource("1_7c0cg")

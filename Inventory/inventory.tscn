@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctxcpuh2fnlr0"]
 
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="1_clu2x"]
-[ext_resource type="Texture2D" uid="uid://8pn4roac3kh6" path="res://inventory/InventoryRect.png" id="1_jxb4q"]
+[ext_resource type="Texture2D" uid="uid://bjcfv8j2rrik3" path="res://inventory/InventoryRect.png" id="1_jxb4q"]
 
 [node name="Inventory" type="Control"]
 custom_minimum_size = Vector2(128, 80)

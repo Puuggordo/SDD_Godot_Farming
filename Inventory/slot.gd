@@ -62,7 +62,6 @@ func _can_drop_data(at_position, data):
 func _drop_data(at_position, data):
 	# Get index of where the selected item is going to be dropped
 	var dropped_slot_index = get_index()
-	# TODO: rename new item index to "item of where the selected item is going to be dropped"
 	# Get the item of where the selected item is going to be dropped
 	var dropped_slot = Global.inventory[dropped_slot_index]
 	Global.inventory.remove_at(data.selected_slot_index)

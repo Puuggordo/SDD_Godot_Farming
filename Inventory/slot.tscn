@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnrogghhhyjiy"]
 
 [ext_resource type="Script" path="res://inventory/slot.gd" id="1_fmtsc"]
-[ext_resource type="Texture2D" uid="uid://caxo7ud45bsw4" path="res://inventory/inventorySlot.png" id="2_d4tvv"]
+[ext_resource type="Texture2D" uid="uid://caxo7ud45bsw4" path="res://inventory/inventorySlot.png" id="2_meu7c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68mle"]
 bg_color = Color(0.902357, 0.902358, 0.902357, 1)
@@ -30,7 +30,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_68mle")
 
 [node name="background" type="Sprite2D" parent="."]
 self_modulate = Color(0.774034, 0.641152, 0.572417, 1)
-texture = ExtResource("2_d4tvv")
+texture = ExtResource("2_meu7c")
 centered = false
 vframes = 2
 

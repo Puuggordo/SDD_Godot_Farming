@@ -12,7 +12,7 @@ var times_quota_fulfilled = 0
 
 var inventory = []
 signal inventoryUpdate
-@onready var slot_scene = preload("res://Inventory/slot.tscn")
+@onready var slot_scene = preload("res://inventory/slot.tscn")
 var current_drag_data = null
 var cant_drop_data = false
 var applicable_active_screen = true
@@ -31,104 +31,116 @@ func array_checker(array: Array, value: String):
 			inv.append(array[r][value])
 	print(inv)
 
+
 func _ready():
+	# Initialize the inventory with 15 slots
 	inventory.resize(15)
+	# Initialize the shop with 5 slots
 	shop_items.resize(5)
+	# Set the number of days remaining to meet the quota
+	days_until_quota = 14
+	# Set the initial quota value
+	quota = 100
+
 
 func _process(delta):
+	# Loop through each slot in the inventory to check for items with zero or negative quantity
 	for i in range(inventory.size()):
 		var slot = inventory[i]
-		if slot!= null and slot.quantity <= 0:
+		# If the slot is not empty and the item quantity is zero or less
+		if slot != null and slot.quantity <= 0:
+			# Remove the item from the inventory
 			inventory.remove_at(i)
-			inventory.insert(i,null)
+			# Insert a null value in its place to maintain inventory size
+			inventory.insert(i, null)
+			# Emit a signal to indicate the inventory has been updated
 			inventoryUpdate.emit()
+	# Ensure the player funds don't fall below zero
 	if player_funds < 0:
 		player_funds = 0
+	# Call a function to calculate and update the quota based on the current state
 	calculate_quota()
 
 
-func add_item_to_shop(item:Item):
+func add_item_to_shop(item: Item):
+	# Loop through each slot in the shop inventory to find a place to add or replace the item
 	for i in range(shop_items.size()):
-		var slot:Item = shop_items[i]
+		var slot: Item = shop_items[i]
+		# Check if the slot is not empty and the item in the slot matches the item to be added
 		if slot != null and slot.item_name == item.item_name:
+			# If a matching item is found, remove the current item in the slot
 			shop_items.remove_at(i)
-			shop_items.insert(i,item)
+			# Insert the new item in the same slot, replacing the old one
+			shop_items.insert(i, item)
+			# Exit the function as the item has been successfully replaced
 			return
+		# Check if the slot is empty
 		elif slot == null:
+			# If the slot is empty, remove it
 			shop_items.remove_at(i)
-			shop_items.insert(i,item)
+			# Insert the new item in the empty slot
+			shop_items.insert(i, item)
+			# Exit the function as the item has been successfully added
 			return
+	# If the function reaches this point, no further action is needed as the item has been added or replaced
 	return
 
 
 func add_item_to_inventory(item: Item):
-	# Loop through each slot in the inventory to attempt to merge the item with existing inventory slots
+	# Item is the item being added 
+	# Loop through each slot in the inventory
 	for i in range(inventory.size()):
 		var slot = inventory[i]
 		# Check if the slot is not null and the item in the slot matches the item to be added
+		# Attempts to merge the item with existing items in the inventory
 		if slot != null and slot.item_name == item.item_name:
 			# Check if adding the item quantity does not exceed the maximum stack limit
 			if slot.quantity + item.quantity <= item.max_stack:
-				if slot != null:
-					print("not over stack")
-					print(slot.item_name)
-					print(item.item_name)
 				# Combine the quantities of the existing item and the new item
 				slot.quantity += item.quantity
 				# Emit a signal to indicate the inventory has been updated
 				inventoryUpdate.emit()
+				# Exit the function as the item quantity is less than max stack
 				return
 			# If the quantity is over the max stack
-			if slot.quantity + item.quantity > item.max_stack:
-				if slot != null:
-					print("if over stack")
-					print(slot.item_name)
-					print(item.item_name)
-				# Then take the remainder
-				var space_left = item.max_stack - slot.quantity
+			elif slot.quantity + item.quantity > item.max_stack:
+				# Total quantity being in the inventory 
+				var total = slot.quantity + item.quantity
 				# Set the slot quantity to the max
 				slot.quantity = item.max_stack
-				item.quantity -= space_left
-				# And add the remainder as a new item
-				for r in range(inventory.size()):
-					if slot == null:
-						inventory.remove_at(r)
-						inventory.insert(r,item)
-						return
-				# Handle overflow situation by splitting items into new slots
-				slot_overflow(slot, item)
-	# Loop through the inventory again to find an empty slot for the new item (if there was no item in the inventory)
-	for i in range(inventory.size()):
-		var slot = inventory[i]
-		# Check if the current slot is null (empty)
-		if slot == null:
-			# If the item quantity exceeds the max stack, handle the overflow
+				# Set the item quantity (item thats being added) equal to the total - max stack
+				# Adjust the item's quantity to the remaining amount that couldn't fit in the slot
+				item.quantity = total - item.max_stack
+				# Loops until a return function (i.e. if the item quantity is less than the max stack)
+				# Continue looping to place the remaining quantity in another slot
+				continue
+		# If the slot is empty (i.e. there is no unfilled slots for the item to be placed in)
+		elif slot == null:
+			# If the item quantity exceeds the max stack
 			if item.quantity > item.max_stack:
-				slot_overflow(slot, item)
-			else: # If the new item quantity is less than or equal to the max stack
+				# Remove the empty slot and insert the item
+				inventory.remove_at(i)
+				inventory.insert(i, item)
+				inventoryUpdate.emit()
+				# Adjust the slot quantity to the maximum stack limit
+				slot = Global.inventory[i]
+				slot.quantity = item.max_stack
+				# Reduce the item's quantity by the amount placed in this slot
+				item.quantity = item.quantity - item.max_stack
+				inventoryUpdate.emit()
+				# Loops until a return function (i.e. if the item quantity is less than the max stack)
+				# Continue looping to place the remaining quantity in another slot
+				continue
+			# If the new item quantity is less than or equal to the max stack
+			elif item.quantity <= item.max_stack:
 				# Insert the new item into the empty slot
 				inventory.remove_at(i)
 				inventory.insert(i, item)
 				# Emit a signal to indicate the inventory has been updated
 				inventoryUpdate.emit()
+				# Exit the function as the item quantity is less than max stack
 				return
-	return
-
-func slot_overflow(slot, item):
-	# Create new slots for the remaining quantity of the item
-	while item.quantity > 0:
-		# Try to find an empty slot in the inventory
-		for j in range(inventory.size()):
-			if inventory[j] == null:
-				# Add the remaining item to the empty slot
-				inventory[j] = item.duplicate()
-				inventory[j].quantity = min(item.quantity, item.max_stack)
-				item.quantity -= inventory[j].quantity
-				break
-		# Exit the loop if there's no remaining quantity
-		if item.quantity <= 0:
-			break
-	inventoryUpdate.emit()  # Notify that the inventory has been updated
+	# If the function reaches this point, no suitable slot was found (i.e. inventory is full), so no further action is taken
 	return
 
 func remove_item_from_inventory(item: Item):
@@ -170,9 +182,6 @@ func make_items_unique():
 	inventory = unique_items
 
 func calculate_quota():
-	if current_day == 0:
-		days_until_quota = 14
-		quota = 100
 	if days_until_quota == 0:
 		times_quota_fulfilled += 1
 		days_until_quota = 14

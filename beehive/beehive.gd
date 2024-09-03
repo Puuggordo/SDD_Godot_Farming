@@ -8,13 +8,17 @@ var end_game = [0, 0.1, 0.1, 0.2, 0.3]
 
 
 func difficulty_scaler(day):
+	# Determine the game's difficulty level based on the current day.
 	if day <= 14:
+		# Days 1-14 are considered "early game"
 		difficulty = "early_game"
 		return early_game
 	elif day <= 28:
+		# Days 15-28 are considered "mid game"
 		difficulty = "mid_game"
 		return mid_game
 	else:
+		# Days beyond 28 are considered "end game"
 		difficulty = "end_game"
 		return end_game
 
@@ -22,13 +26,18 @@ func difficulty_scaler(day):
 func weather_picker(weights: Array):
 	var sum: float
 	var weights_sorted = []
+	# Generate a random float between 0 and 1 to determine the weather
 	var picker = randf()
+	# Calculate the cumulative weights to create a weighted selection
 	for value in weights:
 		sum += value
 		weights_sorted.append(sum)
+	# Loop through the first five elements in the weather list
 	for i in range(5):
+		# If the random number falls within the current cumulative weight, return the corresponding weather
 		if picker < weights_sorted[i]:
 			return weather_list[i]
+		# If the random number is greater than or equal to the last cumulative weight, return "none"
 		elif picker >= weights_sorted[-1]:
 			return "none"
 
@@ -77,9 +86,15 @@ func _on_shop_button_pressed():
 
 
 func _on_deposit_quota_pressed():
+	# Check if the player has enough funds to fully meet the quota
 	if Global.quota - Global.player_funds <= 0:
+		# If the player has enough funds, subtract the quota amount from player funds
 		Global.player_funds -= Global.quota
+		# Set the quota to 0, as it has been fully met
 		Global.quota = 0
+	# If the player doesn't have enough funds to fully meet the quota,
 	else:
+ 		# Subtract the player's funds from the quota
 		Global.quota -= Global.player_funds
+		# Set the player's funds to 0, as they have been fully used to pay towards the quota
 		Global.player_funds = 0
