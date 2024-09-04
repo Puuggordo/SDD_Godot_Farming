@@ -32,8 +32,6 @@ func currency_checker():
 		# Set sufficient_funds to true, indicating the player can afford the purchase.
 		sufficent_funds = true
 	else:
-		# Print a message if the player doesn't have enough funds and set sufficient_funds to false.
-		print("Insufficient funds")
 		sufficent_funds = false
 
 func shop_item_to_inventory():
@@ -54,3 +52,8 @@ func _on_button_pressed():
 		shop_item_to_inventory()
 
 
+
+
+func _on_button_2_pressed():
+	self.hide()
+	Global.applicable_active_screen = true

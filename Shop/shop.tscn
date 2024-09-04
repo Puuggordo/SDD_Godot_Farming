@@ -51,7 +51,7 @@ animations = [{
 atlas = ExtResource("3_ptwhg")
 region = Rect2(48, 16, 16, 16)
 
-[sub_resource type="Resource" id="Resource_8bb67"]
+[sub_resource type="Resource" id="Resource_fcc78"]
 resource_local_to_scene = true
 script = ExtResource("4_akdad")
 quantity = 0
@@ -92,7 +92,7 @@ layout_mode = 2
 
 [node name="Sunflower" parent="ScrollContainer/ItemContainer" instance=ExtResource("2_6f6f6")]
 layout_mode = 2
-item = SubResource("Resource_8bb67")
+item = SubResource("Resource_fcc78")
 
 [node name="BlueOrchid" parent="ScrollContainer/ItemContainer" instance=ExtResource("2_6f6f6")]
 layout_mode = 2
@@ -133,4 +133,12 @@ offset_right = 386.0
 offset_bottom = 420.0
 text = "Total"
 
+[node name="Button2" type="Button" parent="."]
+offset_left = 824.0
+offset_top = 132.0
+offset_right = 910.0
+offset_bottom = 169.0
+text = "Close"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

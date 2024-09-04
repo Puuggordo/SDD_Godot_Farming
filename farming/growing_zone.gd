@@ -4,6 +4,7 @@ var flower_growing = false
 var flower_grown = false
 var previous_day = Global.current_day
 var flower_alive = true
+var fertilised = false
 var item_data : Item
 var flower : Item
 var fertiliser : Item
@@ -12,6 +13,7 @@ var pollen_multiplier = 1
 @export var none_frame: SpriteFrames
 @onready var plant_growth_animator = $plant_growing
 @onready var particle = $fertiliser_sprite
+
 
 var node_size = Vector2(16,16)
 var mouse_button_held = false
@@ -56,11 +58,13 @@ func _process(delta):
 				plant_growth_animator.play("default")
 				flower_growing = true
 				flower_alive = true
+				fertilised = false
 			# Apply fertiliser effects if fertiliser is selected
-			elif item_data.type == "fertiliser":
-				Global.remove_item_from_inventory(item_data)
+			elif item_data.type == "fertiliser" and !fertilised:
 				fertiliser = item_data
 				if flower != null:
+					fertilised = true
+					Global.remove_item_from_inventory(item_data)
 					apply_fertiliser_effect()
 
 
@@ -84,14 +88,12 @@ func flower_affinities_handler():
 		# 10% for the flower to die
 		if Global.current_weather == strengths and picker <= 0.1:
 			flower_exterminator()
-			print("strength")
 			return
 	# Check if the current weather matches any of the flower's weaknesses
 	for weaknesses in flower.weaknesses:
 		# 50% for the flower to die
 		if Global.current_weather == weaknesses and picker <= 0.5:
 			flower_exterminator()
-			print("weak")
 			return
 	# If there is no weather
 	if Global.current_weather == "none":
@@ -101,7 +103,6 @@ func flower_affinities_handler():
 	# If no strengths or weaknesses match, there is a 20% for the flower to die
 	elif picker <=0.2:
 		flower_exterminator()
-		print("none")
 		return
 
 
@@ -131,6 +132,7 @@ func apply_fertiliser_effect():
 	particle.show()
 	await get_tree().create_timer(.5).timeout
 	particle.hide()
+	fertilised = true
 
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
@@ -146,6 +148,7 @@ func flower_exterminator():
 	flower_grown = false
 	flower_growing = false
 	flower_alive = false
+	fertilised = false
 	# Reset the plant growth animator to its default state
 	plant_growth_animator.set_sprite_frames(none_frame)
 	plant_growth_animator.play("default")

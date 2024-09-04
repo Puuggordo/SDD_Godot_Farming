@@ -62,3 +62,13 @@ func _unhandled_input(event):
 			selected_slot += 1  # Move to the next slot when scrolling up.
 		if event.is_action_pressed("scroll_down"):
 			selected_slot -= 1  # Move to the previous slot when scrolling down.
+	if Input.is_action_pressed("1"):
+		selected_slot = 0
+	elif Input.is_action_pressed("2"):
+		selected_slot = 1
+	elif Input.is_action_pressed("3"):
+		selected_slot = 2
+	elif Input.is_action_pressed("4"):
+		selected_slot = 3
+	elif Input.is_action_pressed("5"):
+		selected_slot = 4

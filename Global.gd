@@ -3,7 +3,7 @@ extends Node
 var mouse_in_use = false
 var current_weather = "none"
 var current_day = 0
-var player_funds = 1000000
+var player_funds = 0
 var player_pollen = 0
 var quota = 0
 var days_until_quota = 0
@@ -25,13 +25,6 @@ var shop_items = []
 
 
 var weather_forcast = []
-
-func array_checker(array: Array, value: String):
-	var inv = []
-	for r in range(array.size()):
-		if array[r] !=null:
-			inv.append(array[r][value])
-	print(inv)
 
 
 func _ready():
