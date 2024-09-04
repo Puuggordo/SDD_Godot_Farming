@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://vcdoku1x7cjg"]
 
-[ext_resource type="Script" path="res://shop/shop.gd" id="1_hwyxa"]
-[ext_resource type="PackedScene" uid="uid://cqt3el0jmrax" path="res://shop/shop_item.tscn" id="2_6f6f6"]
+[ext_resource type="Script" path="res://shop2/shop.gd" id="1_hwyxa"]
+[ext_resource type="PackedScene" uid="uid://cqt3el0jmrax" path="res://shop2/shop_item.tscn" id="2_6f6f6"]
 [ext_resource type="Texture2D" uid="uid://sngybh835wa8" path="res://flowers/Flowers.png" id="3_ptwhg"]
-[ext_resource type="Script" path="res://inventory/item.gd" id="4_akdad"]
+[ext_resource type="Script" path="res://inventory3/item.gd" id="4_akdad"]
 [ext_resource type="Resource" uid="uid://bw6m4bjs0yshi" path="res://flowers/blue_orchid_seed.tres" id="5_5nn64"]
 [ext_resource type="Resource" uid="uid://ca6qcynhj4psp" path="res://flowers/snowdrop_seed.tres" id="6_1cf3b"]
 [ext_resource type="Resource" uid="uid://dtscpdvfcn7cw" path="res://flowers/lavender_seed.tres" id="7_q7lae"]

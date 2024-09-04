@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://beehive/beehive.gd" id="1_8vq4q"]
 [ext_resource type="Texture2D" uid="uid://nkktrygx2khb" path="res://beehive/Beehive.png" id="2_eb6m6"]
-[ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://shop/shop.tscn" id="3_klgqc"]
+[ext_resource type="PackedScene" uid="uid://vcdoku1x7cjg" path="res://shop2/shop.tscn" id="3_klgqc"]
 [ext_resource type="PackedScene" uid="uid://cq15jqt347vhg" path="res://game_over_screen.tscn" id="4_xs3vq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyguw"]
