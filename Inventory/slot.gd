@@ -18,10 +18,13 @@ func set_item(new_item: Item,quantity):
 	count_label.text = str(quantity)
 	set_tooltip_text(new_item.item_name)
 	BG_sprite.frame = 1
-	tooltip_text = """Strengths: %s 
-	Weaknesses: %s 
-	Pollen range: %s-%s""" % [str(new_item.strengths), str(new_item.weaknesses), str(new_item.pollen_range_min), str(new_item.pollen_range_max)]
-
+	if new_item.type == "flower":
+		tooltip_text = """Strengths: %s 
+		Weaknesses: %s 
+		Pollen range: %s-%s""" % [str(new_item.strengths), str(new_item.weaknesses), str(new_item.pollen_range_min), str(new_item.pollen_range_max)]
+	if new_item.type == "fertiliser":
+		tooltip_text = """Pollen effect: %s
+		Growth effect: %s""" %[str(new_item.effect_pollen), str(new_item.effect_growth)]
 
 func set_empty():
 	icon.texture = null

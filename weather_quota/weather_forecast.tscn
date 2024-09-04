@@ -79,3 +79,11 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.85
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 64.0
+offset_right = 290.0
+offset_bottom = 87.0
+text = "(Weather Forcast)"

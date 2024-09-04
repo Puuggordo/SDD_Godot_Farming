@@ -12,9 +12,13 @@ func _ready():
 	cost_label.text = str(item.cost) + " Honey"
 	name_label.text = item.item_name
 	icon.texture = item.item_texture
-	tooltip_text = """Strengths: %s 
-	Weaknesses: %s 
-	Pollen range: %s-%s""" % [str(item.strengths), str(item.weaknesses), str(item.pollen_range_min), str(item.pollen_range_max)]
+	if item.type == "flower":
+		tooltip_text = """Strengths: %s 
+		Weaknesses: %s 
+		Pollen range: %s-%s""" % [str(item.strengths), str(item.weaknesses), str(item.pollen_range_min), str(item.pollen_range_max)]
+	if item.type == "fertiliser":
+		tooltip_text = """Pollen effect: %s
+		Growth effect: %s""" % [str(item.effect_pollen), str(item.effect_growth)]
 	update_shop()
 
 func update_shop():

@@ -114,13 +114,15 @@ func flower_resource():
 		var pollen_output = randi_range(min_pollen, max_pollen)
 		Global.player_pollen += pollen_output
 
-
+# Apply fertiliser effects on growth and pollen production
 func apply_fertiliser_effect():
-	# Apply fertiliser effects on growth and pollen production
+	# Pick a number between 0 and 1
 	var picker = randf()
-	# Determine the growth multiplier based on the fertiliser's effect
+	# Check if the random number is less than or equal to the fractional part of the fertiliser's growth effect
 	if picker <= (fertiliser.effect_growth - int(fertiliser.effect_growth)):
+		# If true, increase the growth multiplier by 1
 		growth_multiplier = int(fertiliser.effect_growth) + 1
+	# Otherwise, use the integer part of the growth effect as the multiplier
 	else:
 		growth_multiplier = int(fertiliser.effect_growth)
 	# Apply the pollen multiplier if the fertiliser effect is greater than 1

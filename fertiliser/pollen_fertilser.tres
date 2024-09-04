@@ -20,6 +20,6 @@ weaknesses = Array[String]([])
 pollen_range_min = 0
 pollen_range_max = 0
 effect_pollen = 2.0
-effect_growth = 0.0
+effect_growth = 1.0
 effect_add_strengths = Array[String]([])
 effect_remove_weaknesses = Array[String]([])

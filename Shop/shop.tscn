@@ -51,7 +51,7 @@ animations = [{
 atlas = ExtResource("3_ptwhg")
 region = Rect2(48, 16, 16, 16)
 
-[sub_resource type="Resource" id="Resource_fcc78"]
+[sub_resource type="Resource" id="Resource_5vd8k"]
 resource_local_to_scene = true
 script = ExtResource("4_akdad")
 quantity = 0
@@ -92,7 +92,7 @@ layout_mode = 2
 
 [node name="Sunflower" parent="ScrollContainer/ItemContainer" instance=ExtResource("2_6f6f6")]
 layout_mode = 2
-item = SubResource("Resource_fcc78")
+item = SubResource("Resource_5vd8k")
 
 [node name="BlueOrchid" parent="ScrollContainer/ItemContainer" instance=ExtResource("2_6f6f6")]
 layout_mode = 2
